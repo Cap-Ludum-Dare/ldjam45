@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 
 public class Window extends JFrame {
 	
+	private static final long serialVersionUID = 8190955651177767499L;
+	
 	private static final int SIZE = 1000;
 	private static final String NAME = "Ludum Dare 45";
 	
@@ -21,10 +23,6 @@ public class Window extends JFrame {
 		
 		this.setVisible(true);
 		
-	}
-	
-	public static void main(String[] m) {
-		new Window();
 	}
 
 }
