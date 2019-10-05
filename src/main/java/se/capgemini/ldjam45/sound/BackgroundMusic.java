@@ -3,6 +3,7 @@ package se.capgemini.ldjam45.sound;
 import javax.sound.midi.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 public class BackgroundMusic implements Runnable {
 
@@ -69,20 +70,18 @@ public class BackgroundMusic implements Runnable {
             Sequencer sequencer = MidiSystem.getSequencer();
             sequencer.open();
 
-            int playing = 1;
-            String file;
+            String[] songs = {"way", "closet", "road", "unity", "makeitup"};
+            Random rand = new Random();
+            int songIndex = -1;
             while(true) {
-                if (playing == 1) {
-                    playing = 2;
-                    file = "./src/main/resources/road.mid";
+                int previous = songIndex;
+                while (previous == songIndex) {
+                    songIndex = rand.nextInt(songs.length);
                 }
-                else {
-                    playing = 1;
-                    file = "./src/main/resources/makeitup.mid";
-                }
+                String file = "./src/main/resources/midi/" + songs[songIndex] + ".mid";
 
                 File midiFile = new File(file);
-                if(!midiFile.exists() || midiFile.isDirectory() || !midiFile.canRead()) {
+                if (!midiFile.exists() || midiFile.isDirectory() || !midiFile.canRead()) {
                     return;
                 }
 
@@ -108,13 +107,12 @@ public class BackgroundMusic implements Runnable {
             // Close the MidiDevice & free resources
             //sequencer.stop();
             //sequencer.close();
-        } catch(MidiUnavailableException mue) {
+        } catch (MidiUnavailableException mue) {
             System.out.println("Midi device unavailable!");
-        } catch(InvalidMidiDataException imde) {
+        } catch (InvalidMidiDataException imde) {
             System.out.println("Invalid Midi data!");
-        } catch(IOException ioe) {
+        } catch (IOException ioe) {
             System.out.println("I/O Error!");
         }
     }
-
 }
