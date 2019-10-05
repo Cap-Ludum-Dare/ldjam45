@@ -1,14 +1,14 @@
 package se.capgemini.ldjam45.builder;
 
-import java.awt.Window;
 import java.util.Arrays;
 
-import controller.Camera;
-import controller.KeyController;
-import controller.TimeController;
-import model.Hero;
-import model.Item;
-import model.World;
+import se.capgemini.ldjam45.controller.Camera;
+import se.capgemini.ldjam45.controller.KeyController;
+import se.capgemini.ldjam45.controller.TimeController;
+import se.capgemini.ldjam45.editor.PointEditor;
+import se.capgemini.ldjam45.model.Hero;
+import se.capgemini.ldjam45.model.Item;
+import se.capgemini.ldjam45.model.World;
 
 public class GameBuilder {
 	
@@ -29,10 +29,11 @@ public class GameBuilder {
 		world.addAll(Arrays.asList(item));
 		
 		Camera camera = new Camera(hero);
+		PointEditor editor = new PointEditor(camera);
 		UIBuilder ui = new UIBuilder();
 		
-		KeyController keyController = new KeyController(hero);
-		ui.build(keyController, camera);
+		KeyController keyController = new KeyController(hero, editor);
+		ui.build(keyController, camera, editor);
 		ui.addViews(world);
 		
 		TimeController timer = new TimeController(hero);

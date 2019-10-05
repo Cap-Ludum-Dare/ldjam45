@@ -1,4 +1,4 @@
-package controller;
+package se.capgemini.ldjam45.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 import javax.swing.Timer;
 
-import model.Alive;
-import model.Hero;
-import model.Type;
-import model.Updateable;
+import se.capgemini.ldjam45.model.Alive;
+import se.capgemini.ldjam45.model.Hero;
+import se.capgemini.ldjam45.model.Type;
+import se.capgemini.ldjam45.model.Updateable;
 
 public class TimeController extends ArrayList<Updateable> {
 	

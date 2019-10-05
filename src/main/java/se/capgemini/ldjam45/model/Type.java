@@ -1,4 +1,4 @@
-package model;
+package se.capgemini.ldjam45.model;
 
 public abstract class Type implements Updateable, Interactable, Alive {
 	

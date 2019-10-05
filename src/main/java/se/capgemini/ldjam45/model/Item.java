@@ -1,4 +1,4 @@
-package model;
+package se.capgemini.ldjam45.model;
 
 public class Item extends Hero {
 

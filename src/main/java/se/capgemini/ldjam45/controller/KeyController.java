@@ -1,4 +1,4 @@
-package controller;
+package se.capgemini.ldjam45.controller;
 
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -9,14 +9,18 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-import model.Hero;
+import se.capgemini.ldjam45.editor.PointEditor;
+import se.capgemini.ldjam45.model.Hero;
 
 public class KeyController implements KeyListener, MouseListener, WindowListener, ComponentListener {
 	
+	private char currentKey = ' ';
 	private Hero hero;
+	private PointEditor editor;
 	
-	public KeyController(Hero hero) {
+	public KeyController(Hero hero, PointEditor editor) {
 		this.hero = hero;
+		this.editor = editor;
 	}
 	
 	public void componentHidden(ComponentEvent arg0) {
@@ -84,14 +88,12 @@ public class KeyController implements KeyListener, MouseListener, WindowListener
 		
 	}
 
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void mouseExited(MouseEvent event) {
+
 	}
 
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void mousePressed(MouseEvent event) {
+		editor.put(event.getX(), event.getY(), currentKey);
 	}
 
 	public void mouseReleased(MouseEvent arg0) {
@@ -100,6 +102,10 @@ public class KeyController implements KeyListener, MouseListener, WindowListener
 	}
 
 	public void keyPressed(KeyEvent key) {
+		
+		if (key.isAltDown()) {
+			currentKey = key.getKeyChar();
+		}
 		if (key.getKeyChar() == 'w' || key.getKeyCode() == KeyEvent.VK_NUMPAD8) {
 			hero.move(0, -1);
 		} else if (key.getKeyChar() == 's' || key.getKeyCode() == KeyEvent.VK_NUMPAD2) {

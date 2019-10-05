@@ -1,25 +1,28 @@
 package se.capgemini.ldjam45.builder;
 
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.Camera;
-import model.Type;
-import model.Updateable;
+import se.capgemini.ldjam45.controller.Camera;
+import se.capgemini.ldjam45.controller.KeyController;
+import se.capgemini.ldjam45.editor.PointEditor;
+import se.capgemini.ldjam45.model.Type;
+import se.capgemini.ldjam45.model.Updateable;
 import se.capgemini.ldjam45.ui.Window;
-import view.TypeView;
-import view.View;
+import se.capgemini.ldjam45.view.TypeView;
+import se.capgemini.ldjam45.view.View;
 
 public class UIBuilder extends ArrayList<Updateable> implements Updateable {
 	
-	private View view = new View();
+	private View view;
 	private Camera camera;
 	
-	public void build(KeyListener keyListener, Camera camera) {
+	public void build(KeyController keyController, Camera camera, PointEditor editor) {
+		view = new View(editor);
 		Window window = new Window();
 		window.setContentPane(view);
-		window.addKeyListener(keyListener);
+		window.addKeyListener(keyController);
+		window.addMouseListener(keyController);
 		
 		this.camera = camera;
 		camera.setWindow(window);
@@ -44,7 +47,7 @@ public class UIBuilder extends ArrayList<Updateable> implements Updateable {
 	}
 
 	public void tick() {
-
+		view.updateUI();
 	}
 	
 

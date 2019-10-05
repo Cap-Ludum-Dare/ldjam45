@@ -1,4 +1,4 @@
-package view;
+package se.capgemini.ldjam45.view;
 
 import javax.swing.*;
 import java.awt.*;
