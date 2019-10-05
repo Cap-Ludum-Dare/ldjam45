@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 
 public class Window extends JFrame {
 	
+	private static final long serialVersionUID = 8190955651177767499L;
+	
 	private static final int SIZE = 1000;
 	private static final String NAME = "Ludum Dare 45";
 	
@@ -23,27 +25,7 @@ public class Window extends JFrame {
 		this.setTitle(NAME);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		this.setVisible(true);
-		
-	}
-
-	private static void sleep(int seconds) {
-		try
-		{
-			TimeUnit.SECONDS.sleep(seconds);
-		}
-		catch(InterruptedException ex)
-		{
-			Thread.currentThread().interrupt();
-		}
-	}
-
-	public static void main(String[] m) {
-		BackgroundMusic bgMusic = new BackgroundMusic();
-		Thread t1 = new Thread(bgMusic);
-		t1.start();
-
-		new Window();
+		this.setVisible(true);	
 	}
 
 }

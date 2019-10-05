@@ -5,6 +5,8 @@ package se.capgemini.ldjam45.sound;
 
 import java.io.*;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
 import javax.sound.sampled.*;
 
 /**
@@ -72,4 +74,35 @@ public enum SoundEffect {
     static void init() {
         values(); // calls the constructor for all the elements
     }
+    
+    public static void test() {
+		SoundEffect.DYING.play();
+		sleep (2);
+		SoundEffect.EXPLOSION.play();
+		sleep (2);
+		SoundEffect.HIT.play();
+		sleep (2);
+		SoundEffect.JUMP.play();
+		sleep (2);
+		SoundEffect.LASER.play();
+		sleep (2);
+		SoundEffect.PICK.play();
+		sleep (2);
+		SoundEffect.PICKUP.play();
+		sleep (2);
+		SoundEffect.SELECT.play();
+		sleep (2);
+		SoundEffect.WALKING.play();
+    }
+    
+	private static void sleep(int seconds) {
+		try
+		{
+			TimeUnit.SECONDS.sleep(seconds);
+		}
+		catch(InterruptedException ex)
+		{
+			Thread.currentThread().interrupt();
+		}
+	}
 }
