@@ -5,18 +5,23 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
+import model.World;
+
 public class TimeController {
 	
-	private static final int UI_UPDATE_OFFSET_MS = 100;
-	private static final int GAME_UPDATE_OFFSET_MS = 500;
+	private static final int UI_UPDATE_OFFSET_MS = 25;
+	private static final int GAME_UPDATE_OFFSET_MS = 100;
 	
 	private Timer uiTimer;
 	private Timer gameTimer;
+	private World world;
 	
 	
-	public TimeController() {
+	public TimeController(World world) {
 		uiTimer = new Timer(UI_UPDATE_OFFSET_MS, new Updater());
 		gameTimer = new Timer(GAME_UPDATE_OFFSET_MS, new Ticker());
+		
+		this.world = world;
 	}
 	
 	public void start() {
@@ -30,7 +35,7 @@ public class TimeController {
 		 *  Updates the game every {@link GAME_UPDATE_OFFSET_MS}.
 		 */
 		public void actionPerformed(ActionEvent e) {
-
+			world.tick();
 		}
 		
 	}
@@ -41,7 +46,7 @@ public class TimeController {
 		 * Updates the UI every @UI_UPDATE_OFFSET_MS.
 		 */
 		public void actionPerformed(ActionEvent e) {
-
+			world.update();
 		}
 		
 	}

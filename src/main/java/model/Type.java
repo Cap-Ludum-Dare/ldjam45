@@ -38,12 +38,4 @@ public abstract class Type implements Updateable {
 		this.y = y;
 	}
 	
-	public void moveX(int dx) {
-		this.x += dx;
-	}
-	
-	public void moveY(int dy) {
-		this.y += dy;
-	}
-
 }

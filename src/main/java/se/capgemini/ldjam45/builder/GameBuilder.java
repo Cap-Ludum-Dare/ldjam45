@@ -1,6 +1,8 @@
 package se.capgemini.ldjam45.builder;
 
 import controller.TimeController;
+import model.Hero;
+import model.World;
 
 public class GameBuilder {
 	
@@ -11,11 +13,18 @@ public class GameBuilder {
 	}
 	
 	public void build() {
-		UIBuilder ui = new UIBuilder();
-		ui.build();
+		// x, y, width, height
+		Hero hero = new Hero(50, 50, 50, 80);
 		
-		TimeController timer = new TimeController();
+		World world = new World(hero);
+		
+		UIBuilder ui = new UIBuilder();
+		ui.build(hero);
+		world.add(ui);
+		
+		TimeController timer = new TimeController(world);
 		timer.start();
+		
 	}
 
 	public static void main(String[] m) {
