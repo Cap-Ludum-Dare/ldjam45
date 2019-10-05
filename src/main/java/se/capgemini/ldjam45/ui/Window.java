@@ -1,10 +1,6 @@
 package se.capgemini.ldjam45.ui;
 
-import se.capgemini.ldjam45.sound.SoundEffect;
-
 import java.awt.Dimension;
-import java.util.concurrent.TimeUnit;
-
 import javax.swing.JFrame;
 
 public class Window extends JFrame {
@@ -24,7 +20,7 @@ public class Window extends JFrame {
 		this.setTitle(NAME);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		this.setVisible(true);	
+		this.setVisible(true);
 	}
 
 }

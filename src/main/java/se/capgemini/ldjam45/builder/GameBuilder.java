@@ -9,6 +9,8 @@ import controller.TimeController;
 import model.Hero;
 import model.Item;
 import model.World;
+import se.capgemini.ldjam45.sound.BackgroundMusic;
+import se.capgemini.ldjam45.sound.SoundEffect;
 
 public class GameBuilder {
 	
@@ -45,8 +47,12 @@ public class GameBuilder {
 
 	public static void main(String[] m) {
 		new GameBuilder().build();
-		
-		// SoundEffect.test(); // TODO: Test sound effects!
+
+		BackgroundMusic bgMusic = new BackgroundMusic();
+		Thread t1 = new Thread(bgMusic);
+		t1.start();
+
+		SoundEffect.test(); // Test sound effects!
 	}
 	
 }
