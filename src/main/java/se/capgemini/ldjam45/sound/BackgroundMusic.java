@@ -70,7 +70,7 @@ public class BackgroundMusic implements Runnable {
             Sequencer sequencer = MidiSystem.getSequencer();
             sequencer.open();
 
-            String[] songs = {"way", "closet", "road", "unity", "makeitup"};
+            String[] songs = {"way", "city", "closet", "road", "unity", "makeitup", "patience", "riot", "expressions", "repetition"};
             Random rand = new Random();
             int songIndex = -1;
             while(true) {
