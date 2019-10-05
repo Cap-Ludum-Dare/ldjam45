@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import javax.swing.Timer;
 
 import model.Alive;
+import model.Hero;
+import model.Type;
 import model.Updateable;
 
 public class TimeController extends ArrayList<Updateable> {
@@ -16,9 +18,12 @@ public class TimeController extends ArrayList<Updateable> {
 	
 	private Timer uiTimer;
 	private Timer gameTimer;
+	private Hero hero;
 	
 	
-	public TimeController() {
+	public TimeController(Hero hero) {
+		this.hero = hero;
+		
 		uiTimer = new Timer(UI_UPDATE_OFFSET_MS, new Updater());
 		gameTimer = new Timer(GAME_UPDATE_OFFSET_MS, new Ticker());
 	}
@@ -35,6 +40,9 @@ public class TimeController extends ArrayList<Updateable> {
 			if (updateable instanceof Alive &&
 					!((Alive)updateable).isAlive()) {
 				this.remove(updateable);
+			} else if (updateable instanceof Type
+					&& hero.isInteractable((Type)updateable)) {
+				hero.interact((Type)updateable);
 			}
 		}
 	}

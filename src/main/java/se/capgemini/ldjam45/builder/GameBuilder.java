@@ -30,7 +30,7 @@ public class GameBuilder {
 		KeyController keyController = new KeyController(hero);
 		ui.build(keyController);
 		
-		TimeController timer = new TimeController();
+		TimeController timer = new TimeController(hero);
 		timer.addAll(world);
 		timer.add(ui);
 		
