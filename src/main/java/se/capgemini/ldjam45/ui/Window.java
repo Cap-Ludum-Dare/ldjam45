@@ -1,6 +1,9 @@
 package se.capgemini.ldjam45.ui;
 
+import se.capgemini.ldjam45.sound.SoundEffect;
+
 import java.awt.Dimension;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.JFrame;
 
@@ -22,8 +25,37 @@ public class Window extends JFrame {
 		this.setVisible(true);
 		
 	}
-	
+
+	private static void sleep(int seconds) {
+		try
+		{
+			TimeUnit.SECONDS.sleep(seconds);
+		}
+		catch(InterruptedException ex)
+		{
+			Thread.currentThread().interrupt();
+		}
+	}
+
 	public static void main(String[] m) {
+		//SoundEffect.DYING.play();
+		//sleep (2);
+		//SoundEffect.EXPLOSION.play();
+		//sleep (2);
+		//SoundEffect.HIT.play();
+		//sleep (2);
+		//SoundEffect.JUMP.play();
+		//sleep (2);
+		//SoundEffect.LASER.play();
+		//sleep (2);
+		//SoundEffect.PICK.play();
+		//sleep (2);
+		//SoundEffect.PICKUP.play();
+		//sleep (2);
+		//SoundEffect.SELECT.play();
+		//sleep (2);
+		//SoundEffect.WALKING.play();
+
 		new Window();
 	}
 
