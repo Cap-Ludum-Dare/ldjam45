@@ -6,6 +6,7 @@ import java.awt.Graphics;
 
 import javax.swing.JLabel;
 
+import controller.Camera;
 import model.Hero;
 import model.Type;
 import model.Updateable;
@@ -15,13 +16,15 @@ public class TypeView extends JLabel implements Updateable {
 	private static final long serialVersionUID = -6626113045924858904L;
 	
 	private Type type;
+	private Camera camera;
 	
-	public TypeView() {
+	public TypeView(Camera camera) {
 		this.setOpaque(true);
+		this.camera = camera;
 	}
 	
-	public TypeView(Type type) {
-		this();
+	public TypeView(Camera camera, Type type) {
+		this(camera);
 		this.setType(type);
 	}
 	
@@ -58,7 +61,7 @@ public class TypeView extends JLabel implements Updateable {
 				type = null;
 				this.setVisible(false);
 			} else {
-				this.setLocation(type.x(), type.y());
+				this.setLocation(camera.dx(type.x()), camera.dy(type.y()));
 			}
 		}
 	}
