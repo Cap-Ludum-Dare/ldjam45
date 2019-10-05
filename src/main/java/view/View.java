@@ -17,9 +17,23 @@ public class View extends JPanel {
 		super.paintComponent(g);
 		for(int x = 0; x < (this.getWidth() + ICON_SIZE); x += ICON_SIZE){
 			for(int y = 0; y < (this.getHeight() + ICON_SIZE); y += ICON_SIZE){
-				g.drawImage(Images.GRASS2.getImage(), x, y, this);
+				if(x == 0){
+					if(y == 0){
+						g.drawImage(Images.GRASS9.getImage(), x, y, this);
+					} else {
+						g.drawImage(Images.GRASS1.getImage(), x, y, this);
+					}
+				} else {
+					if(y == 0){
+						g.drawImage(Images.GRASS10.getImage(), x, y, this);
+					} else {
+						g.drawImage(Images.GRASS8.getImage(), x, y, this);
+					}
+				}
 			}
 		}
+		g.drawImage(Images.TREE10.getImage(), 500,450, this);
+		g.drawImage(Images.TREE2.getImage(), 500,500, this);
 	}
 
 }
