@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class World extends ArrayList<Updateable> implements Updateable {
+public class World extends ArrayList<Type> implements Updateable {
 
 	private Hero hero;
 	
@@ -21,6 +21,11 @@ public class World extends ArrayList<Updateable> implements Updateable {
 	public void tick() {
 		for(Updateable updateable : new ArrayList<Updateable>(this)) {
 			updateable.tick();
+			
+			if (updateable instanceof Alive &&
+					!((Alive)updateable).isAlive()) {
+				this.remove(updateable);
+			}
 		}
 	}
 	

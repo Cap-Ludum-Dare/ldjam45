@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Type implements Updateable {
+public abstract class Type implements Updateable, Interactable, Alive {
 	
 	protected int x;
 	protected int y;

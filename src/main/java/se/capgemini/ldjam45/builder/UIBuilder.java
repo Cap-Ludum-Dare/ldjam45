@@ -1,9 +1,10 @@
 package se.capgemini.ldjam45.builder;
 
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.List;
 
-import controller.KeyController;
-import model.Hero;
+import model.Type;
 import model.Updateable;
 import se.capgemini.ldjam45.ui.Window;
 import view.TypeView;
@@ -11,25 +12,24 @@ import view.View;
 
 public class UIBuilder extends ArrayList<Updateable> implements Updateable {
 	
+	private View view = new View();
 	
-	public void build(Hero hero) {
-		View view = new View();
-		
-		// x, y, width, height
-		// Hero secondus = new Hero(80, 80, 50, 50);
-		TypeView heroView = new TypeView(hero);
-		heroView.update();
-		this.add(heroView);
-		
-		view.add(heroView);
-		
+	public void build(KeyListener keyListener) {
 		Window window = new Window();
 		window.setContentPane(view);
-		
-		KeyController keyController = new KeyController(hero);
-		window.addKeyListener(keyController);
-		
-		
+		window.addKeyListener(keyListener);
+	}
+	
+	public void addViews(List<Type> types) {
+		for (Type type : types) {
+			this.addView(type);
+		}
+	}
+	
+	public void addView(Type type) {
+		TypeView typeView = new TypeView(type);
+		this.add(typeView);
+		view.add(typeView);
 	}
 
 	public void update() {

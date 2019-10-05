@@ -2,26 +2,25 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.Timer;
 
-import model.World;
+import model.Alive;
+import model.Updateable;
 
-public class TimeController {
+public class TimeController extends ArrayList<Updateable> {
 	
 	private static final int UI_UPDATE_OFFSET_MS = 25;
 	private static final int GAME_UPDATE_OFFSET_MS = 100;
 	
 	private Timer uiTimer;
 	private Timer gameTimer;
-	private World world;
 	
 	
-	public TimeController(World world) {
+	public TimeController() {
 		uiTimer = new Timer(UI_UPDATE_OFFSET_MS, new Updater());
 		gameTimer = new Timer(GAME_UPDATE_OFFSET_MS, new Ticker());
-		
-		this.world = world;
 	}
 	
 	public void start() {
@@ -29,26 +28,39 @@ public class TimeController {
 		gameTimer.start();
 	}
 	
+	public void tick() {
+		for(Updateable updateable : new ArrayList<Updateable>(this)) {
+			updateable.tick();
+			
+			if (updateable instanceof Alive &&
+					!((Alive)updateable).isAlive()) {
+				this.remove(updateable);
+			}
+		}
+	}
+	
+	public void update() {
+		for(Updateable updateable : new ArrayList<Updateable>(this)) {
+			updateable.update();
+		}
+	}
+	
 	private class Ticker implements ActionListener {
-
 		/**
 		 *  Updates the game every {@link GAME_UPDATE_OFFSET_MS}.
 		 */
 		public void actionPerformed(ActionEvent e) {
-			world.tick();
+			tick();
 		}
-		
 	}
 	
 	private class Updater implements ActionListener {
-
 		/**
 		 * Updates the UI every @UI_UPDATE_OFFSET_MS.
 		 */
 		public void actionPerformed(ActionEvent e) {
-			world.update();
+			update();
 		}
-		
 	}
 
 }

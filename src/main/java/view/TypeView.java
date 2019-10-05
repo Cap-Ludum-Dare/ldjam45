@@ -17,13 +17,12 @@ public class TypeView extends JLabel implements Updateable {
 	private Type type;
 	
 	public TypeView() {
-		this.setVisible(true);
 		this.setOpaque(true);
 	}
 	
-	public TypeView(Hero hero) {
+	public TypeView(Type type) {
 		this();
-		this.setType(hero);
+		this.setType(type);
 	}
 	
 	@Override
@@ -45,6 +44,7 @@ public class TypeView extends JLabel implements Updateable {
 			
 			this.setSize(dimension);
 			this.setPreferredSize(dimension);
+			this.setVisible(true);
 		}
 	}
 	
@@ -54,7 +54,12 @@ public class TypeView extends JLabel implements Updateable {
 
 	public void update() {
 		if (exists()) {
-			this.setLocation(type.x(), type.y());
+			if (!type.isAlive()) {
+				type = null;
+				this.setVisible(false);
+			} else {
+				this.setLocation(type.x(), type.y());
+			}
 		}
 	}
 
