@@ -81,7 +81,6 @@ public enum Images {
     WIN("./src/main/resources/images/win.png", ""),
     GAME_OVER("./src/main/resources/images/game_over.png", "");
 
-
     public static final int TILE_SIZE = 50;
     public static final int HERO_HEIGHT = 80;
     public static final int HERO_WIDTH = 50;
@@ -98,7 +97,7 @@ public enum Images {
     public static Images defaultWater() {
     	return Images.WATER_0;
     }
-    
+
     public static Images getImage(String key) {
     	for (Images images : Images.values()) {
     		if (("" + images.name().toUpperCase().charAt(0))
@@ -130,11 +129,11 @@ public enum Images {
         } else if(path.contains("grass")){
             this.image = new ImageIcon(path).getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT);
             this.isWalkable = true;
-        } else {        	
+        } else {
             this.image = new ImageIcon(path).getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT);
             this.isWalkable = false;
         }
-        
+
     	if (path.contains("tree")) {
     		background = Images.defaultImage();
     	} else if (path.contains("bridge")) {
