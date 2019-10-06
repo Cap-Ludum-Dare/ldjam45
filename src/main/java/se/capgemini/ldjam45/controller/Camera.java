@@ -1,6 +1,6 @@
-package controller;
+package se.capgemini.ldjam45.controller;
 
-import model.Type;
+import se.capgemini.ldjam45.model.Type;
 import se.capgemini.ldjam45.ui.Window;
 
 public class Camera {
@@ -32,8 +32,16 @@ public class Camera {
 		return originalX - xOffset();
 	}
 	
+	public int revertX(int newX) {
+		return xOffset() + newX;
+	}
+	
 	public int dy(int originalY) {
 		return originalY - yOffset();
+	}
+	
+	public int revertY(int newY) {
+		return yOffset() + newY;
 	}
 
 }
