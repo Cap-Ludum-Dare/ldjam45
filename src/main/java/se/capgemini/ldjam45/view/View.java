@@ -1,6 +1,10 @@
 package se.capgemini.ldjam45.view;
 
+import java.awt.Font;
 import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -13,11 +17,16 @@ public class View extends JPanel {
 	private static final long serialVersionUID = 2118299654730994785L;
 	private Editor editor;
 	private Camera camera;
+	private List<Overlay> overlays = new ArrayList<Overlay>();
 
 	public View(Editor editor, Camera camera) {
 		this.setLayout(null);
 		this.editor = editor;
 		this.camera = camera;
+	}
+	
+	public void addOverlays(Overlay... overlays) {
+		this.overlays.addAll(Arrays.asList(overlays));
 	}
 
 	public void paintComponent(Graphics g) {
@@ -44,6 +53,13 @@ public class View extends JPanel {
 				g.drawImage(images.getImage(), dx, dy, this);
 			}
 		}
+		
+		for (Overlay overlay : new ArrayList<Overlay>(overlays)) {
+			if (overlay.isAlive()) {
+				overlay.paintComponent(g, this.getWidth(), this.getHeight());
+			}
+		}
+		
 	}
 
 }
