@@ -11,6 +11,7 @@ import se.capgemini.ldjam45.model.Item;
 import se.capgemini.ldjam45.model.World;
 import se.capgemini.ldjam45.sound.BackgroundMusic;
 import se.capgemini.ldjam45.sound.SoundEffect;
+import se.capgemini.ldjam45.view.Images;
 
 
 public class GameBuilder {
@@ -24,9 +25,9 @@ public class GameBuilder {
 	public void build() {
 		
 		// x, y, width, height
-		Hero hero = new Hero(50, 50, 50, 80);
+		Hero hero = new Hero(50, 50, 50, 80, Images.HERO_0.getImage());
 		
-		Item item = new Item(300, 300, 30, 30);
+		Item item = new Item(300, 300, 30, 30, Images.LEVEL1PHONE_0.getImage());
 		
 		World world = new World(hero);
 		world.addAll(Arrays.asList(item));

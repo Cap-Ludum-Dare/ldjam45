@@ -13,7 +13,7 @@ import se.capgemini.ldjam45.view.Images;
 public class Editor {
 
 	private static final String FILE_NAME = "scenario/scenario.txt";
-	private static final int MULTIPLIER = 50;
+	private static final int MULTIPLIER = Images.TILE_SIZE;
 	
 	private Camera camera;
 	
@@ -36,10 +36,13 @@ public class Editor {
 		int revertedX = camera.revertX(x);
 		int revertedY = camera.revertY(y);
 		
-		x = (revertedX / MULTIPLIER) - (revertedX % MULTIPLIER != 0 ? 1 : 0);
-		y = (revertedY / MULTIPLIER) - (revertedY % MULTIPLIER != 0 ? 1 : 0);
-
-		Point point = new Point(x, y);
+		int diffX = revertedX > 0 ? 0 : -1;
+		int diffY = revertedY > 0 ? 0 : -1;
+		
+		x = (revertedX / MULTIPLIER) + diffX;
+		y = (revertedY / MULTIPLIER) + diffY;
+		
+		Point point = new Point((int)x, (int)y);
 		
 		key = getKey(key, point); 
 		
@@ -52,7 +55,7 @@ public class Editor {
 		String currentKey = map.get(point);
 		
 		String name = null;
-		int number = 1;
+		int number = 0;
 		
 		if (currentKey != null && (currentKey.charAt(0) + "").equals((key + "").toUpperCase())) {
 			number = Integer.parseInt(currentKey.split(Images.SEPARATOR)[1]) + 1;
@@ -62,7 +65,7 @@ public class Editor {
 			try {
 				Images.valueOf(testKey);
 			} catch (Exception nonExistingKey) {
-				number = 1;
+				number = 0;
 			}
 			
 		} else {
