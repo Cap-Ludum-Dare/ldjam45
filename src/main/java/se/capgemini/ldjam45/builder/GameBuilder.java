@@ -25,7 +25,7 @@ public class GameBuilder {
 	public void build() {
 		
 		// x, y, width, height
-		Hero hero = new Hero(50, 50, 50, 80, Images.HERO_0.getImage());
+		Hero hero = new Hero(50, 50, 50, 80, Images.HERO_1.getImage());
 		
 		Item item = new Item(300, 300, 30, 30, Images.LEVEL1PHONE_0.getImage());
 		

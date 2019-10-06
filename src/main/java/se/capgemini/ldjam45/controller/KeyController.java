@@ -11,6 +11,7 @@ import java.awt.event.WindowListener;
 
 import se.capgemini.ldjam45.editor.Editor;
 import se.capgemini.ldjam45.model.Hero;
+import se.capgemini.ldjam45.view.Images;
 
 public class KeyController implements KeyListener, MouseListener, WindowListener, ComponentListener {
 	
@@ -124,6 +125,7 @@ public class KeyController implements KeyListener, MouseListener, WindowListener
 			hero.move(1, 1);
 		}
 	}
+
 
 	public void keyReleased(KeyEvent arg0) {
 		hero.move(0, 0);

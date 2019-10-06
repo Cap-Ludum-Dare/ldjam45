@@ -46,7 +46,16 @@ public enum Images {
     TREE_11("./src/main/resources/images/trees/tree (11).png"),
     TREE_12("./src/main/resources/images/trees/tree (12).png"),
     HERO_0("./src/main/resources/images/hero/walks/walk_down/down1.png"),
-    LEVEL1PHONE_0("./src/main/resources/images/items/level1/smarthphone.png");
+    HERO_1("./src/main/resources/images/hero/walks/walk_down/down2.png"),
+    HERO_2("./src/main/resources/images/hero/walks/walk_left/left1.png"),
+    HERO_3("./src/main/resources/images/hero/walks/walk_left/left2.png"),
+    HERO_4("./src/main/resources/images/hero/walks/walk_up/up1.png"),
+    HERO_5("./src/main/resources/images/hero/walks/walk_up/up2.png"),
+    HERO_6("./src/main/resources/images/hero/walks/walk_right/right1.png"),
+    HERO_7("./src/main/resources/images/hero/walks/walk_right/right2.png"),
+    ROAD_0("./src/main/resources/images/road/bridge (1).png"),
+    ROAD_1("./src/main/resources/images/road/bridge (2).png"),
+    LEVEL1PHONE_0("./src/main/resources/images/items/level1/smartphone.png");
 
     public static final int TILE_SIZE = 50;
     public static final int HERO_HEIGHT = 80;
