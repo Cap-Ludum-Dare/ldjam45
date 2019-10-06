@@ -3,6 +3,7 @@ package se.capgemini.ldjam45.view;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
 
 import javax.swing.*;
 
@@ -19,41 +20,21 @@ public class TypeView extends JLabel implements Updateable {
 	private Camera camera;
 	private boolean showTooltip = false;
 
-	public void addMouseListener() {
-		addMouseListener(new MouseAdapter() {
-			public void mouseExited(MouseEvent arg0) {
-				showTooltip = false;
-			}
-
-			public void mouseEntered(MouseEvent arg0) {
-				showTooltip = true;
-			}
-		});
-	}
 
 	public TypeView(Camera camera) {
 		this.setOpaque(false);
 		this.camera = camera;
-		addMouseListener();
 	}
 	
 	public TypeView(Camera camera, Type type) {
 		this(camera);
 		this.setType(type);
-		addMouseListener();
 	}
 	
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		if (showTooltip) {
-			int dx = camera.revertX(-camera.xOffset() + 100 - camera.xOffset() % 50);
-			int dy = camera.revertY(-camera.yOffset() + 100 - camera.yOffset() % 50);
-
-			g.drawString(type.getName(), dx, dy);
-			
-		}
 	}
 
 
