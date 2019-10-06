@@ -2,7 +2,9 @@ package se.capgemini.ldjam45.builder;
 
 import java.util.Arrays;
 
+import se.capgemini.ldjam45.client.RestClient;
 import se.capgemini.ldjam45.controller.Camera;
+import se.capgemini.ldjam45.controller.ClientController;
 import se.capgemini.ldjam45.controller.KeyController;
 import se.capgemini.ldjam45.controller.TimeController;
 import se.capgemini.ldjam45.editor.Editor;
@@ -50,6 +52,9 @@ public class GameBuilder {
 
 	public static void main(String[] m) {
 		new GameBuilder().build();
+
+		ClientController clientController = new ClientController();
+		System.out.println(clientController.getScores());
 
 		BackgroundMusic bgMusic = new BackgroundMusic();
 		Thread t1 = new Thread(bgMusic);
