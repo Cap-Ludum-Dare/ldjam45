@@ -45,9 +45,9 @@ public class TimeController extends ArrayList<Updateable> {
 				this.remove(updateable);
 			} else if (updateable instanceof Type
 					&& hero.isInteractable((Type)updateable)) {
-				boolean isPicked = hero.interact((Type)updateable);
-				if (isPicked) {
-					ui.showScore();
+				String skill = hero.interact((Type)updateable);
+				if (!skill.isEmpty()) {
+					ui.showScoreAndSkill(skill);
 				}
 			}
 		}

@@ -6,6 +6,7 @@ import se.capgemini.ldjam45.editor.Editor;
 import se.capgemini.ldjam45.model.Type;
 import se.capgemini.ldjam45.model.Updateable;
 import se.capgemini.ldjam45.score.ScoreHandler;
+import se.capgemini.ldjam45.sound.SoundEffect;
 import se.capgemini.ldjam45.ui.Window;
 import se.capgemini.ldjam45.view.Overlay;
 import se.capgemini.ldjam45.view.TypeView;
@@ -65,6 +66,7 @@ public class UIBuilder extends ArrayList<Updateable> implements Updateable {
         view.add(typeView);
         typeView.addMouseListener(new MouseAdapter() {
             public void mouseEntered(MouseEvent arg0) {
+                SoundEffect.HIT.play();
                 view.addOverlays(
                         new Overlay(Arrays.asList(
                                 type.getName()
@@ -73,12 +75,18 @@ public class UIBuilder extends ArrayList<Updateable> implements Updateable {
         });
     }
 
-    public void showScore() {
+    public void showScoreAndSkill(String skill) {
+        view.addOverlays(
+                new Overlay(Arrays.asList(
+                        "Added new skill: " + skill
+                ), new Font("Arial", Font.BOLD, 30), TIME_ON_SCREEN * 2, view.getHeight() - 400)
+        );
+
         view.addOverlays(
                 new Overlay(Arrays.asList(
                         "SCORE: " + ScoreHandler.getTotalScore()
-                ), new Font("Arial", Font.BOLD, 30), TIME_ON_SCREEN, view.getHeight() - 200));
-
+                ), new Font("Arial", Font.BOLD, 30), TIME_ON_SCREEN * 2, view.getHeight() - 200)
+        );
     }
 
 
