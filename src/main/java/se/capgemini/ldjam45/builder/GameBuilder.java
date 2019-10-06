@@ -1,5 +1,6 @@
 package se.capgemini.ldjam45.builder;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,73 +26,58 @@ public class GameBuilder {
 		
 		
 	}
-	
+
+	private void addItem(List<Item> items, String name, int x, int y, Image image) {
+		Item item = new Item(name, x, y, 30, 30, image);
+		items.add(item);
+	}
+
 	public void build() {
 		
 		// x, y, width, height
 		Hero hero = new Hero("You",50, 50, 50, 80, Images.HERO_0.getImage());
 
 		List<Item> items = new ArrayList<Item>();
-		Item item = new Item("Backpack", 100, 100, 30, 30, Images.BACKPACK.getImage());
-		items.add(item);
-		item = new Item("Book", 200, 100, 30, 30, Images.BOOK.getImage());
-		items.add(item);
-		item = new Item("Computer", 300, 100, 30, 30, Images.COMPUTER.getImage());
-		items.add(item);
-		item = new Item("Joystick", 400, 100, 30, 30, Images.JOYSTICK.getImage());
-		items.add(item);
-		item = new Item("Juice", 500, 100, 30, 30, Images.JUICE.getImage());
-		items.add(item);
-		item = new Item("Notepad", 600, 100, 30, 30, Images.NOTEPAD.getImage());
-		items.add(item);
-		item = new Item("Remote", 700, 100, 30, 30, Images.REMOTE.getImage());
-		items.add(item);
-		item = new Item("Screwdriver", 800, 100, 30, 30, Images.SCREWDRIVER.getImage());
-		items.add(item);
-		item = new Item("Smartphone", 900, 100, 30, 30, Images.SMARTPHONE.getImage());
-		items.add(item);
-		item = new Item("Toothbrush", 1000, 100, 30, 30, Images.TOOTHBRUSH.getImage());
-		items.add(item);
-		item = new Item("Blender", 1100, 100, 30, 30, Images.BLENDER.getImage());
-		items.add(item);
-		item = new Item("Brush", 1200, 100, 30, 30, Images.BRUSH.getImage());
-		items.add(item);
-		item = new Item("Calculator", 1300, 100, 30, 30, Images.CALCULATOR.getImage());
-		items.add(item);
-		item = new Item("Chemistry", 1400, 100, 30, 30, Images.CHEMISTRY.getImage());
-		items.add(item);
-		item = new Item("Coffee", 1500, 100, 30, 30, Images.COFFEE.getImage());
-		items.add(item);
-		item = new Item("Headset", 1600, 100, 30, 30, Images.HEADSET.getImage());
-		items.add(item);
-		item = new Item("Pan", 1700, 100, 30, 30, Images.PAN.getImage());
-		items.add(item);
-		item = new Item("Pepper", 1800, 100, 30, 30, Images.PEPPER.getImage());
-		items.add(item);
-		item = new Item("Wheel", 1900, 100, 30, 30, Images.WHEEL.getImage());
-		items.add(item);
-		item = new Item("Wine", 2000, 100, 30, 30, Images.WINE.getImage());
-		items.add(item);
-		item = new Item("Backend", 2100, 100, 30, 30, Images.BACKEND.getImage());
-		items.add(item);
-		item = new Item("Bell", 2200, 100, 30, 30, Images.BELL.getImage());
-		items.add(item);
-		item = new Item("Color", 2300, 100, 30, 30, Images.COLOR.getImage());
-		items.add(item);
-		item = new Item("Frontend", 2400, 100, 30, 30, Images.FRONTEND.getImage());
-		items.add(item);
-		item = new Item("Key", 2500, 100, 30, 30, Images.KEY.getImage());
-		items.add(item);
-		item = new Item("Keyboard", 2600, 100, 30, 30, Images.KEYBOARD.getImage());
-		items.add(item);
-		item = new Item("Pen", 2700, 100, 30, 30, Images.PEN.getImage());
-		items.add(item);
-		item = new Item("Screen", 2800, 100, 30, 30, Images.SCREEN.getImage());
-		items.add(item);
-		item = new Item("Stack", 2900, 100, 30, 30, Images.STACK.getImage());
-		items.add(item);
-		item = new Item("Video games", 3000, 100, 30, 30, Images.VIDEO_GAMES.getImage());
-		items.add(item);
+
+		// Level 0:
+		//   Walking
+		//   Running
+
+		// Level 1
+		addItem(items, "Backpack", 100, 100, Images.BACKPACK.getImage());
+		addItem(items, "Book", 200, 100, Images.BOOK.getImage());
+		addItem(items, "Computer", 300, 100, Images.COMPUTER.getImage());
+		addItem(items, "Joystick", 400, 100, Images.JOYSTICK.getImage());
+		addItem(items, "Juice", 500, 100, Images.JUICE.getImage());
+		addItem(items, "Notepad", 600, 100, Images.NOTEPAD.getImage());
+		addItem(items, "Remote", 700, 100, Images.REMOTE.getImage());
+		addItem(items, "Screwdriver", 800, 100, Images.SCREWDRIVER.getImage());
+		addItem(items, "Smartphone", 900, 100, Images.SMARTPHONE.getImage());
+		addItem(items, "Toothbrush", 1000, 100, Images.TOOTHBRUSH.getImage());
+
+		// Level 2
+		addItem(items, "Blender", 1100, 100, Images.BLENDER.getImage());
+		addItem(items, "Brush", 1200, 100, Images.BRUSH.getImage());
+		addItem(items, "Calculator", 1300, 100, Images.CALCULATOR.getImage());
+		addItem(items, "Chemistry", 1400, 100, Images.CHEMISTRY.getImage());
+		addItem(items, "Coffee", 1500, 100, Images.COFFEE.getImage());
+		addItem(items, "Headset", 1600, 100, Images.HEADSET.getImage());
+		addItem(items, "Pan", 1700, 100, Images.PAN.getImage());
+		addItem(items, "Pepper", 1800, 100, Images.PEPPER.getImage());
+		addItem(items, "Wheel", 1900, 100, Images.WHEEL.getImage());
+		addItem(items, "Wine", 2000, 100, Images.WINE.getImage());
+
+		// Level 3
+		addItem(items, "Backend", 2100, 100, Images.BACKEND.getImage());
+		addItem(items, "Bell", 2200, 100, Images.BELL.getImage());
+		addItem(items, "Color", 2300, 100, Images.COLOR.getImage());
+		addItem(items, "Frontend", 2400, 100, Images.FRONTEND.getImage());
+		addItem(items, "Key", 2500, 100, Images.KEY.getImage());
+		addItem(items, "Keyboard", 2600, 100, Images.KEYBOARD.getImage());
+		addItem(items, "Pen", 2700, 100, Images.PEN.getImage());
+		addItem(items, "Screen", 2800, 100, Images.SCREEN.getImage());
+		addItem(items, "Stack", 2900, 100, Images.STACK.getImage());
+		addItem(items, "Video games", 3000, 100, Images.VIDEO_GAMES.getImage());
 
 		World world = new World(hero);
 		world.addAll(items);
