@@ -1,4 +1,6 @@
-package model;
+package se.capgemini.ldjam45.model;
+
+import se.capgemini.ldjam45.sound.SoundEffect;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +13,7 @@ public class Item extends Hero {
 
 	public Item pickedUp() {
 		isAlive = false;
+		SoundEffect.PICK.play();
 		return this;
 	}
 

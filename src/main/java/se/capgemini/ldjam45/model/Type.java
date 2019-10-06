@@ -1,4 +1,4 @@
-package model;
+package se.capgemini.ldjam45.model;
 
 import java.awt.*;
 

@@ -1,4 +1,4 @@
-package view;
+package se.capgemini.ldjam45.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -6,10 +6,10 @@ import java.awt.Graphics;
 
 import javax.swing.*;
 
-import controller.Camera;
-import model.Hero;
-import model.Type;
-import model.Updateable;
+import se.capgemini.ldjam45.controller.Camera;
+import se.capgemini.ldjam45.model.Hero;
+import se.capgemini.ldjam45.model.Type;
+import se.capgemini.ldjam45.model.Updateable;
 
 public class TypeView extends JLabel implements Updateable {
 	

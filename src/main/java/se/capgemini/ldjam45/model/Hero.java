@@ -1,9 +1,7 @@
-package model;
+package se.capgemini.ldjam45.model;
 
-import view.Images;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Image;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
