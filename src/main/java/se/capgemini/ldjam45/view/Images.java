@@ -92,6 +92,10 @@ public enum Images {
     	return GRASS_8;
     }
     
+    public static Images defaultWater() {
+    	return Images.WATER_0;
+    }
+    
     public static Images getImage(String key) {
     	for (Images images : Images.values()) {
     		if (("" + images.name().toUpperCase().charAt(0))
@@ -105,6 +109,7 @@ public enum Images {
     
     private Image image;
     private boolean isWalkable;
+    public Images background;
 
     private Images(String path){
         if(path.contains("hero")){
@@ -120,10 +125,16 @@ public enum Images {
         } else if(path.contains("grass")){
             this.image = new ImageIcon(path).getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT);
             this.isWalkable = true;
-        } else {
+        } else {        	
             this.image = new ImageIcon(path).getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT);
             this.isWalkable = false;
         }
+        
+    	if (path.contains("tree")) {
+    		background = Images.defaultImage();
+    	} else if (path.contains("bridge")) {
+    		background = Images.defaultWater();
+    	}
     }
     
     public Image getImage(){
