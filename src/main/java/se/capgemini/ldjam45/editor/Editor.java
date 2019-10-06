@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import se.capgemini.ldjam45.controller.Camera;
+import se.capgemini.ldjam45.model.World;
 import se.capgemini.ldjam45.view.Images;
 
 public class Editor {
@@ -44,8 +45,8 @@ public class Editor {
 		
 		boolean isWalkable = true;
 		
-		for (int i = x - 1; i<=x+1; i++) {
-			for (int j = y - 1; j<=y+1; j++) {
+		for (int i = x - 1; i <= x+1 && isWalkable; i++) {
+			for (int j = y - 1; j <= y+1 && isWalkable; j++) {
 				Point point = new Point(i, j);
 				String key = map.get(point);
 	
@@ -63,6 +64,11 @@ public class Editor {
 					}
 				} catch (Exception ex) {
 				}
+				
+				if (!World.WORLD.contains(point)) {
+					isWalkable = false;
+					break;
+				}
 			}
 		}
 		
@@ -73,6 +79,10 @@ public class Editor {
 		x = camera.revertX(x) / MULTIPLIER;
 		y = camera.revertY(y) / MULTIPLIER;
 		Point point = new Point(x, y);
+		return map.containsKey(point) ? map.get(point) : " ";
+	}
+	
+	public String getExact(Point point) {
 		return map.containsKey(point) ? map.get(point) : " ";
 	}
 	
