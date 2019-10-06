@@ -47,7 +47,7 @@ public class UIBuilder extends ArrayList<Updateable> implements Updateable {
                 new Overlay(Arrays.asList(
                         "Welcome",
                         "Let's start with nothing!"
-                ), new Font("Arial", Font.BOLD, 30), 10000, 50),
+                ), new Font("Arial", Font.BOLD, 30), 20000, 50),
 
                 new Overlay(Arrays.asList(
                         "Credits LD45",

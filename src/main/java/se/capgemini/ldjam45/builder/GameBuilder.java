@@ -69,5 +69,8 @@ public class GameBuilder {
 		BackgroundMusic bgMusic = new BackgroundMusic();
 		Thread t1 = new Thread(bgMusic);
 		t1.start();
+
+		// SoundEffect.test(); // Test sound effects!
+
 	}
 }

@@ -94,7 +94,7 @@ public class KeyController implements KeyListener, MouseListener, WindowListener
 	}
 
 	public void mousePressed(MouseEvent event) {
-		editor.put(event.getX(), event.getY(), "" + currentKey);
+		// editor.put(event.getX(), event.getY(), "" + currentKey);
 	}
 
 	public void mouseReleased(MouseEvent arg0) {
