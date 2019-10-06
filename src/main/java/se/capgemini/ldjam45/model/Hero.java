@@ -54,10 +54,12 @@ public class Hero extends Type {
 		return rectangle.intersects(compared);
 	}
 
-	public void interact(Interactable interactable) {
+	public boolean interact(Interactable interactable) {
 		if (interactable instanceof Item) {
 			items.add(((Item)interactable).pickedUp());
+			return true;
 		}
+		return false;
 	}
 
 	public Image getImage(){
