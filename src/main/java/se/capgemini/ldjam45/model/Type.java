@@ -3,21 +3,25 @@ package se.capgemini.ldjam45.model;
 import java.awt.*;
 
 public abstract class Type implements Updateable, Interactable, Alive {
-	
+
+	protected String name;
 	protected int x;
 	protected int y;
 	protected int width;
 	protected int height;
 	protected Image image;
-	
-	public Type(int x, int y, int width, int height, Image image) {
+
+	public Type(String name, int x, int y, int width, int height, Image image) {
+		this.name = name;
 		this.x = x;
 		this.y = y;
 		this.height = height;
 		this.width = width;
 		this.image = image;
 	}
-	
+
+	public String getName() { return name; }
+
 	public int x() {
 		return x;
 	}
