@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import se.capgemini.ldjam45.controller.Camera;
 import se.capgemini.ldjam45.editor.Editor;
 import se.capgemini.ldjam45.model.World;
+import se.capgemini.ldjam45.timer.TimeCountdown;
 
 public class View extends JPanel {
 
@@ -77,7 +78,10 @@ public class View extends JPanel {
 				overlay.paintComponent(g, this.getWidth(), this.getHeight());
 			}
 		}
-		
+
+		g.setColor(Color.BLACK);
+		g.setFont(new Font("Arial", Font.BOLD, 50));
+		g.drawString("Time: " + TimeCountdown.getGameTimeInSeconds() + "s", 10, 50);
 	}
 
 }
