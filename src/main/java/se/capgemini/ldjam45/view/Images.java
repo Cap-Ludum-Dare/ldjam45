@@ -78,7 +78,8 @@ public enum Images {
     STACK("./src/main/resources/images/items/level3/stack.png", "Full stack developer"),
     VIDEO_GAMES("./src/main/resources/images/items/level3/video_games.png", "Creating games"),
     LEVEL1PHONE_0("./src/main/resources/images/items/level1/smarthphone.png", ""),
-    WIN("./src/main/resources/images/win.png", "");
+    WIN("./src/main/resources/images/win.png", ""),
+    GAME_OVER("./src/main/resources/images/game_over.png", "");
 
 
     public static final int TILE_SIZE = 50;
@@ -124,7 +125,7 @@ public enum Images {
             this.isWalkable = true;
         } else if(path.contains("road")){
             this.isWalkable = true;
-        } else if(path.contains("win")){
+        } else if(path.contains("win") || path.contains("game_over")){
             this.image = new ImageIcon(path).getImage().getScaledInstance(WIN_X_SIZE, WIN_Y_SIZE, Image.SCALE_DEFAULT);
         } else if(path.contains("grass")){
             this.image = new ImageIcon(path).getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT);
