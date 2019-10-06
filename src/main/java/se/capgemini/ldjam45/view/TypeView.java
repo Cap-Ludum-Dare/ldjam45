@@ -62,6 +62,7 @@ public class TypeView extends JLabel implements Updateable {
 				this.setVisible(false);
 			} else {
 				this.setLocation(camera.dx(type.x()), camera.dy(type.y()));
+				this.setIcon(new ImageIcon(type.getImage()));
 			}
 		}
 	}
