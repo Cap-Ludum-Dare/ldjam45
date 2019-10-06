@@ -50,7 +50,9 @@ public class View extends JPanel {
 					
 				images = images == null ? Images.defaultImage() : images;
 				
-
+				if (images.background != null) {
+					g.drawImage(images.background.getImage(), dx, dy, this);
+				}
 				g.drawImage(images.getImage(), dx, dy, this);
 				
 				// g.setColor(Color.red);
