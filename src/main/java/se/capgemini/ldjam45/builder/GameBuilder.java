@@ -67,11 +67,11 @@ public class GameBuilder {
 	public static void main(String[] m) {
 		new GameBuilder().build();
 
-/*		BackgroundMusic bgMusic = new BackgroundMusic();
+		BackgroundMusic bgMusic = new BackgroundMusic();
 		Thread t1 = new Thread(bgMusic);
 		t1.start();
 
-		SoundEffect.test(); // Test sound effects!*/
+		// SoundEffect.test(); // Test sound effects!
 	}
 	
 }

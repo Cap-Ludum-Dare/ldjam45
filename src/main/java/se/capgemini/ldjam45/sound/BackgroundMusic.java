@@ -3,6 +3,7 @@ package se.capgemini.ldjam45.sound;
 import javax.sound.midi.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Random;
 
 public class BackgroundMusic implements Runnable {
@@ -78,14 +79,9 @@ public class BackgroundMusic implements Runnable {
                 while (previous == songIndex) {
                     songIndex = rand.nextInt(songs.length);
                 }
-                String file = "./src/main/resources/midi/" + songs[songIndex] + ".mid";
 
-                File midiFile = new File(file);
-                if (!midiFile.exists() || midiFile.isDirectory() || !midiFile.canRead()) {
-                    return;
-                }
-
-                sequencer.setSequence(MidiSystem.getSequence(midiFile));
+        		URL url = this.getClass().getResource("/midi/" + songs[songIndex] + ".mid");
+                sequencer.setSequence(MidiSystem.getSequence(url));
                 sequencer.start();
                 Synthesizer synthesizer = MidiSystem.getSynthesizer();
                 resetGain(sequencer, synthesizer);

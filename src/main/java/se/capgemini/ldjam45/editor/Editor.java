@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +17,7 @@ import se.capgemini.ldjam45.view.Images;
 
 public class Editor {
 
-	private static final String FILE_NAME = "scenario/scenario.txt";
+	private static final String FILE_NAME = "/scenario/scenario.txt";
 	private static final int MULTIPLIER = Images.TILE_SIZE;
 	
 	private Camera camera;
@@ -131,8 +132,8 @@ public class Editor {
 	}
 	
 	private void load() {
-
-		try (ObjectInputStream stream = new ObjectInputStream(this.getClass().getClassLoader().getResourceAsStream(FILE_NAME))){
+		URL url = this.getClass().getResource(FILE_NAME);
+		try (ObjectInputStream stream = new ObjectInputStream(url.openStream())){
 			map = (Map<Point, String>)stream.readObject();
 	        
 		} catch (Exception ex) {
