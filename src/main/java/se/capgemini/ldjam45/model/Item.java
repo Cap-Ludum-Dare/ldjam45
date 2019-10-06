@@ -1,10 +1,9 @@
 package se.capgemini.ldjam45.model;
 
+import java.awt.Image;
+
 import se.capgemini.ldjam45.score.ScoreHandler;
 import se.capgemini.ldjam45.sound.SoundEffect;
-
-import javax.swing.*;
-import java.awt.*;
 
 public class Item extends Hero {
 
