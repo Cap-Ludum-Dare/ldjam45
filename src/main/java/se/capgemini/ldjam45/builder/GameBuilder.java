@@ -32,7 +32,7 @@ public class GameBuilder {
 	public void build() {
 		
 		// x, y, width, height
-		Hero hero = new Hero("You","You", 50, 50, 50, 80, Images.HERO_0.getImage());
+		Hero hero = new Hero("You","You", 50, 50, Images.HERO_WIDTH, Images.HERO_HEIGHT, Images.HERO_0.getImage());
 
 		Camera camera = new Camera(hero);
 		Editor editor = new Editor(camera);
@@ -40,13 +40,13 @@ public class GameBuilder {
 		/*
 		testing victory
 		 */
-		Victory v = new Victory();
+		/*Victory v = new Victory();
 		Window w = new Window();
 		w.setContentPane(v);
 
 		GameOver gameOver = new GameOver();
 		Window w2 = new Window();
-		w2.setContentPane(gameOver);
+		w2.setContentPane(gameOver);*/
 		
 		World world = new World(hero, editor, ui);
 		world.randomizeItems();

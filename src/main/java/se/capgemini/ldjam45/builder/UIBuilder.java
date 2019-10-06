@@ -1,5 +1,14 @@
 package se.capgemini.ldjam45.builder;
 
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.swing.JPanel;
+
 import se.capgemini.ldjam45.controller.Camera;
 import se.capgemini.ldjam45.controller.KeyController;
 import se.capgemini.ldjam45.editor.Editor;
@@ -11,14 +20,11 @@ import se.capgemini.ldjam45.score.ScoreHandler;
 import se.capgemini.ldjam45.sound.SoundEffect;
 import se.capgemini.ldjam45.timer.TimeCountdown;
 import se.capgemini.ldjam45.ui.Window;
-import se.capgemini.ldjam45.view.*;
-
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import se.capgemini.ldjam45.view.GameOver;
+import se.capgemini.ldjam45.view.Overlay;
+import se.capgemini.ldjam45.view.TypeView;
+import se.capgemini.ldjam45.view.Victory;
+import se.capgemini.ldjam45.view.View;
 
 public class UIBuilder extends ArrayList<Updateable> implements Updateable {
 
@@ -98,15 +104,17 @@ public class UIBuilder extends ArrayList<Updateable> implements Updateable {
         }
     }
 
-    public void tick() {
+    public synchronized void tick() {
 
-        if (Hero.items.size() >= World.itemsCreated - 2) {
-            window.setContentPane(new Victory());
-        } else if (TimeCountdown.getGameTimeInSeconds() <= 0) {
-            window.setContentPane(new GameOver());
-        }
+    	if (window.getContentPane() instanceof View) {
+	        if (Hero.items.size() >= World.itemsCreated - 2) {
+	            window.setContentPane(new Victory());
+	        } else if (TimeCountdown.getGameTimeInSeconds() <= 0) {
+	            window.setContentPane(new GameOver());
+	        }
+    	}
 
-        view.updateUI();
+        ((JPanel)window.getContentPane()).updateUI();
     }
 
 

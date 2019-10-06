@@ -89,7 +89,7 @@ public enum Images {
     GAME_OVER("./src/main/resources/images/game_over.png", "");
 
     public static final int TILE_SIZE = 50;
-    public static final int HERO_HEIGHT = 80;
+    public static final int HERO_HEIGHT = 50;
     public static final int HERO_WIDTH = 50;
     public static final int ITEM_SIZE = 30;
     public static final int WIN_X_SIZE = 500;

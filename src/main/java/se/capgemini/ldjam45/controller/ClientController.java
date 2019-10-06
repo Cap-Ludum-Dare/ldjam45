@@ -20,8 +20,6 @@ public class ClientController implements Runnable {
     }
 
     public void start() {
-        ExecutorService executor = Executors.newFixedThreadPool(1);
-        executor.submit(this);
     }
 
     public List<Score> getScores() {

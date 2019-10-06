@@ -107,6 +107,11 @@ public class KeyController implements KeyListener, MouseListener, WindowListener
 		if (key.isAltDown()) {
 			currentKey = key.getKeyChar();
 		}
+		
+		if (key.isAltDown() && key.getKeyChar() == KeyEvent.VK_F4) {
+			System.exit(1);
+		}
+		
 		if (key.getKeyChar() == 'w' || key.getKeyCode() == KeyEvent.VK_NUMPAD8) {
 			hero.move(0, -1);
 		} else if (key.getKeyChar() == 's' || key.getKeyCode() == KeyEvent.VK_NUMPAD2) {
