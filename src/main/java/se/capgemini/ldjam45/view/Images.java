@@ -75,11 +75,15 @@ public enum Images {
     PEN("./src/main/resources/images/items/level3/pen.png"),
     SCREEN("./src/main/resources/images/items/level3/screen.png"),
     STACK("./src/main/resources/images/items/level3/stack.png"),
-    VIDEO_GAMES("./src/main/resources/images/items/level3/video_games.png");
+    VIDEO_GAMES("./src/main/resources/images/items/level3/video_games.png"),
+    LEVEL1PHONE_0("./src/main/resources/images/items/level1/smarthphone.png"),
+    WIN("./src/main/resources/images/win.png");
 
     public static final int TILE_SIZE = 50;
     public static final int HERO_HEIGHT = 80;
     public static final int ITEM_SIZE = 30;
+    public static final int WIN_X_SIZE = 500;
+    public static final int WIN_Y_SIZE = 300;
 
     public static final String SEPARATOR = "_";
     
@@ -110,6 +114,8 @@ public enum Images {
             this.isWalkable = true;
         } else if(path.contains("road")){
             this.isWalkable = true;
+        } else if(path.contains("win")){
+            this.image = new ImageIcon(path).getImage().getScaledInstance(WIN_X_SIZE, WIN_Y_SIZE, Image.SCALE_DEFAULT);
         } else {
             this.image = new ImageIcon(path).getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT);
             this.isWalkable = false;

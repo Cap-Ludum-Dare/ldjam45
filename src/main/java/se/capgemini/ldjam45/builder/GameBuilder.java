@@ -16,7 +16,10 @@ import se.capgemini.ldjam45.model.Item;
 import se.capgemini.ldjam45.model.World;
 import se.capgemini.ldjam45.sound.BackgroundMusic;
 import se.capgemini.ldjam45.sound.SoundEffect;
+import se.capgemini.ldjam45.ui.Window;
 import se.capgemini.ldjam45.view.Images;
+import se.capgemini.ldjam45.view.Victory;
+import se.capgemini.ldjam45.view.View;
 
 
 public class GameBuilder {
@@ -85,6 +88,12 @@ public class GameBuilder {
 		Camera camera = new Camera(hero);
 		Editor editor = new Editor(camera);
 		UIBuilder ui = new UIBuilder();
+		/*
+		testing victory
+		 */
+		Victory v = new Victory(editor, camera);
+		Window w = new Window();
+		w.setContentPane(v);
 		
 		KeyController keyController = new KeyController(hero, editor);
 		ui.build(keyController, camera, editor);
@@ -95,20 +104,16 @@ public class GameBuilder {
 		timer.add(ui);
 		
 		timer.start();
-		
 	}
 
 	public static void main(String[] m) {
 		new GameBuilder().build();
 
-		ClientController clientController = new ClientController();
-		System.out.println(clientController.getScores());
-
-		BackgroundMusic bgMusic = new BackgroundMusic();
+/*		BackgroundMusic bgMusic = new BackgroundMusic();
 		Thread t1 = new Thread(bgMusic);
 		t1.start();
 
-		SoundEffect.test(); // Test sound effects!
+		SoundEffect.test(); // Test sound effects!*/
 	}
 	
 }

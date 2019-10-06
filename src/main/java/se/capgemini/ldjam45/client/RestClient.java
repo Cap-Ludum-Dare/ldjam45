@@ -4,9 +4,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import se.capgemini.ldjam45.model.Score;
 
@@ -35,7 +37,7 @@ public class RestClient {
 
     public String saveScore(String username, int score) {
         HttpPost request = new HttpPost("https://ld45score.azurewebsites.net/savescore?username=" + username + "&score=" + score);
-        DefaultHttpClient httpClient = new DefaultHttpClient();
+        HttpClient httpClient = HttpClientBuilder.create().build();
         try {
 
             HttpResponse response = null;
@@ -46,25 +48,17 @@ public class RestClient {
                 throw new RuntimeException("Failed with HTTP error code : " + statusCode);
             }
 
-            //Now pull back the response object
-            HttpEntity httpEntity = response.getEntity();
-            String apiOutput = EntityUtils.toString(httpEntity);
-
-            System.out.println("###################################");
-            System.out.println("DTO: " + apiOutput);
-
             return "saved";
+
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            //Important: Close the connect
-            httpClient.getConnectionManager().shutdown();
         }
+
         return null;
     }
 
     private List<Score> request(HttpGet getRequest) {
-        DefaultHttpClient httpClient = new DefaultHttpClient();
+        HttpClient httpClient = HttpClientBuilder.create().build();
         try {
 
             HttpResponse response = null;
@@ -88,17 +82,12 @@ public class RestClient {
                 dto.setScore(node.at("/score").asInt());
                 scores.add(dto);
             }
-
-            System.out.println("###################################");
-            System.out.println("DTO: " + scores.toString());
             return scores;
 
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            //Important: Close the connect
-            httpClient.getConnectionManager().shutdown();
         }
-        return null;
+
+        return new ArrayList<>();
     }
 }
