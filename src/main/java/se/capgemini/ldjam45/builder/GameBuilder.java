@@ -1,12 +1,9 @@
 package se.capgemini.ldjam45.builder;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import se.capgemini.ldjam45.controller.Camera;
-import se.capgemini.ldjam45.controller.ClientController;
 import se.capgemini.ldjam45.controller.KeyController;
 import se.capgemini.ldjam45.controller.TimeController;
 import se.capgemini.ldjam45.editor.Editor;
@@ -14,21 +11,17 @@ import se.capgemini.ldjam45.model.Hero;
 import se.capgemini.ldjam45.model.Item;
 import se.capgemini.ldjam45.model.World;
 import se.capgemini.ldjam45.sound.BackgroundMusic;
-import se.capgemini.ldjam45.sound.SoundEffect;
 import se.capgemini.ldjam45.ui.Window;
 import se.capgemini.ldjam45.view.GameOver;
 import se.capgemini.ldjam45.view.Images;
-import se.capgemini.ldjam45.view.Menu;
 import se.capgemini.ldjam45.view.Victory;
-import se.capgemini.ldjam45.view.View;
+
+import javax.swing.*;
 
 
 public class GameBuilder {
 	
 	public GameBuilder() {
-		
-		
-		
 	}
 
 	private void addItem(List<Item> items, String name, String skill, int x, int y, Image image) {
@@ -51,7 +44,7 @@ public class GameBuilder {
 		Window w = new Window();
 		w.setContentPane(v);
 
-		Menu gameOver = new Menu();
+		GameOver gameOver = new GameOver();
 		Window w2 = new Window();
 		w2.setContentPane(gameOver);
 		

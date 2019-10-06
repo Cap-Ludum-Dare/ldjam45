@@ -39,6 +39,8 @@ public class GameOver extends JPanel {
         g.setColor(Color.black);
         g.setFont(new Font("Verdana", Font.BOLD, 30));
         g.drawString(String.valueOf("Your Score: " + ScoreHandler.getTotalScore()), this.getWidth() / 2 - (g.getFontMetrics().stringWidth(String.valueOf(ScoreHandler.getTotalScore()) + g.getFontMetrics().stringWidth(String.valueOf("Your Score: ")) / 2)), this.getHeight() - (this.getHeight() * 2 / 10));
-        clientController.saveScore("username", ScoreHandler.getTotalScore());
+        String username = JOptionPane.showInputDialog("Insert username: ");
+
+        clientController.saveScore(username, ScoreHandler.getTotalScore());
     }
 }
