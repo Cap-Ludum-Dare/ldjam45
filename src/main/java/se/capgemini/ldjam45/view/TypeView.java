@@ -23,6 +23,7 @@ public class TypeView extends JLabel implements Updateable {
 	public TypeView(Camera camera) {
 		this.setOpaque(false);
 		this.camera = camera;
+	    // 	this.setBorder(BorderFactory.createLineBorder(Color.red));
 	}
 	
 	public TypeView(Camera camera, Type type) {

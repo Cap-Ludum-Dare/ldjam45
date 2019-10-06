@@ -81,6 +81,7 @@ public enum Images {
 
     public static final int TILE_SIZE = 50;
     public static final int HERO_HEIGHT = 80;
+    public static final int HERO_WIDTH = 50;
     public static final int ITEM_SIZE = 30;
     public static final int WIN_X_SIZE = 500;
     public static final int WIN_Y_SIZE = 300;
@@ -107,7 +108,7 @@ public enum Images {
 
     private Images(String path){
         if(path.contains("hero")){
-            this.image = new ImageIcon(path).getImage().getScaledInstance(TILE_SIZE, HERO_HEIGHT, Image.SCALE_DEFAULT);
+            this.image = new ImageIcon(path).getImage().getScaledInstance(HERO_WIDTH, HERO_HEIGHT, Image.SCALE_DEFAULT);
             this.isWalkable = false;
         } else if(path.contains("items")){
             this.image = new ImageIcon(path).getImage().getScaledInstance(ITEM_SIZE, ITEM_SIZE, Image.SCALE_DEFAULT);
@@ -116,6 +117,9 @@ public enum Images {
             this.isWalkable = true;
         } else if(path.contains("win")){
             this.image = new ImageIcon(path).getImage().getScaledInstance(WIN_X_SIZE, WIN_Y_SIZE, Image.SCALE_DEFAULT);
+        } else if(path.contains("grass")){
+            this.image = new ImageIcon(path).getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT);
+            this.isWalkable = true;
         } else {
             this.image = new ImageIcon(path).getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT);
             this.isWalkable = false;
@@ -126,7 +130,7 @@ public enum Images {
         return this.image;
     }
     
-    public boolean getIsWalkable(){
+    public boolean isWalkable(){
         return isWalkable;
     }
     

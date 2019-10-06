@@ -26,14 +26,26 @@ public class Hero extends Type {
 		this.dx = dx;
 		this.dy = dy;
 	}
+	
+	public void move() {
+		x = nextX();
+		y = nextY();
+	}
 
 	public void update() {
 		
 	}
 
 	public void tick() {
-		x += dx * speed;
-		y += dy * speed;
+
+	}
+	
+	public int nextY() {
+		return y + dy * speed;
+	}
+	
+	public int nextX() {
+		return x + dx * speed;
 	}
 	
 	public boolean isInteractable(Type type) {
