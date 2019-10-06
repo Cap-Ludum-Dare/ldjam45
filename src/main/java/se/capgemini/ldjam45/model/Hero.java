@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Hero extends Type {
 	
-	private List<Item> items = new ArrayList<Item>();
+	public static List<Item> items = new ArrayList<Item>();
 
 	protected boolean isAlive = true;
 	private int speed = 10;

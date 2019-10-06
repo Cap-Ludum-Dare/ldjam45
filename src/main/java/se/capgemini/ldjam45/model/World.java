@@ -10,6 +10,7 @@ import se.capgemini.ldjam45.view.Images;
 public class World extends ArrayList<Type> implements Updateable {
 
 	public static final Rectangle WORLD = new Rectangle(-40, -40, 90, 90);
+	public static int itemsCreated = 0;
 	
 	private Hero hero;
 	private Editor editor;

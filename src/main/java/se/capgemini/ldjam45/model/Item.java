@@ -9,6 +9,7 @@ public class Item extends Hero {
 
 	public Item(String name, String skill, int x, int y, int width, int height, Image image) {
 		super(name, skill, x, y, width, height, image);
+		World.itemsCreated++;
 	}
 
 	public String getSkill() {
