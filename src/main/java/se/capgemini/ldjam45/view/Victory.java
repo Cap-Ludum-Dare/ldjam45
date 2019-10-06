@@ -4,6 +4,7 @@ import se.capgemini.ldjam45.controller.Camera;
 import se.capgemini.ldjam45.controller.ClientController;
 import se.capgemini.ldjam45.editor.Editor;
 import se.capgemini.ldjam45.model.Score;
+import se.capgemini.ldjam45.score.ScoreHandler;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,19 +33,19 @@ public class Victory extends JPanel {
 
         g.drawImage(WIN.getImage(), x, y, this);
         g.setFont(new Font("Verdana", Font.BOLD, 50));
-        g.drawString("Scores: ", this.getWidth() - 500, 100);
+        g.drawString("Scores: ", this.getWidth() - (this.getWidth() * 3/10), this.getHeight() - (this.getHeight() * 9/10));
         List<Score> scores = clientController.getScores();
         g.setFont(new Font("Verdana", Font.BOLD, 20));
         int spacement = 0;
         for (Score s : scores) {
             spacement += 50;
-            g.drawString(s.getUsername() + ": " + s.getScore(), this.getWidth() - 500, 100 + spacement);
+            g.drawString(s.getUsername() + ": " + s.getScore(), this.getWidth() - (this.getWidth() * 3/10), this.getHeight() - (this.getHeight() * 9/10) + spacement);
         }
         g.setColor(Color.red);
         g.setFont(new Font("Verdana", Font.BOLD, 50));
-        g.drawString("Your Score: ", this.getWidth() / 2 - 160, this.getHeight() - 300);
+        g.drawString("Your Score: ", this.getWidth() / 2 - (g.getFontMetrics().stringWidth("Your Score: ") / 2), this.getHeight() - (this.getHeight() * 3/10));
         g.setColor(Color.black);
         g.setFont(new Font("Verdana", Font.BOLD, 30));
-        g.drawString("200", this.getWidth() / 2 - 20, this.getHeight() - 250);
+        g.drawString(String.valueOf(ScoreHandler.getTotalScore()), this.getWidth() / 2 - (g.getFontMetrics().stringWidth(String.valueOf(ScoreHandler.getTotalScore())) / 2), this.getHeight() - (this.getHeight() * 2/10));
     }
 }
