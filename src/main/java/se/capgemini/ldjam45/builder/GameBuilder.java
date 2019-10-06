@@ -16,6 +16,7 @@ import se.capgemini.ldjam45.model.World;
 import se.capgemini.ldjam45.sound.BackgroundMusic;
 import se.capgemini.ldjam45.sound.SoundEffect;
 import se.capgemini.ldjam45.ui.Window;
+import se.capgemini.ldjam45.view.GameOver;
 import se.capgemini.ldjam45.view.Images;
 import se.capgemini.ldjam45.view.Victory;
 import se.capgemini.ldjam45.view.View;
@@ -48,6 +49,10 @@ public class GameBuilder {
 		Victory v = new Victory(editor, camera);
 		Window w = new Window();
 		w.setContentPane(v);
+
+		GameOver gameOver = new GameOver(editor, camera);
+		Window w2 = new Window();
+		w2.setContentPane(gameOver);
 		
 		World world = new World(hero, editor, ui);
 		world.randomizeItems();
