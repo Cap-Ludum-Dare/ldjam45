@@ -1,5 +1,6 @@
 package se.capgemini.ldjam45.view;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -32,7 +33,6 @@ public class View extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-
 		for(int x = - ICON_SIZE; x < (this.getWidth() + ICON_SIZE); x += ICON_SIZE){
 			for(int y = - ICON_SIZE; y < (this.getHeight() + ICON_SIZE); y += ICON_SIZE) {
 				
@@ -49,8 +49,12 @@ public class View extends JPanel {
 				}
 					
 				images = images == null ? Images.defaultImage() : images;
-					
+				
+
 				g.drawImage(images.getImage(), dx, dy, this);
+				
+				// g.setColor(Color.red);
+				// g.drawString((camera.revertX(dx) / 50) + " " + (camera.revertY(dy) / 50), dx + 15, dy + 15);
 			}
 		}
 		

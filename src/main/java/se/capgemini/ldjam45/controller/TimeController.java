@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.Timer;
 
+import se.capgemini.ldjam45.editor.Editor;
 import se.capgemini.ldjam45.model.Alive;
 import se.capgemini.ldjam45.model.Hero;
 import se.capgemini.ldjam45.model.Type;
@@ -19,7 +20,6 @@ public class TimeController extends ArrayList<Updateable> {
 	private Timer uiTimer;
 	private Timer gameTimer;
 	private Hero hero;
-	
 	
 	public TimeController(Hero hero) {
 		this.hero = hero;
@@ -40,11 +40,9 @@ public class TimeController extends ArrayList<Updateable> {
 			if (updateable instanceof Alive &&
 					!((Alive)updateable).isAlive()) {
 				this.remove(updateable);
-			} else if (updateable instanceof Type
-					&& hero.isInteractable((Type)updateable)) {
-				hero.interact((Type)updateable);
 			}
 		}
+
 	}
 	
 	public void update() {

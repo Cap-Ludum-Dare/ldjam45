@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import se.capgemini.ldjam45.client.RestClient;
 import se.capgemini.ldjam45.controller.Camera;
 import se.capgemini.ldjam45.controller.ClientController;
 import se.capgemini.ldjam45.controller.KeyController;
@@ -81,9 +80,6 @@ public class GameBuilder {
 		addItem(items, "Screen", 2800, 100, Images.SCREEN.getImage());
 		addItem(items, "Stack", 2900, 100, Images.STACK.getImage());
 		addItem(items, "Video games", 3000, 100, Images.VIDEO_GAMES.getImage());
-
-		World world = new World(hero);
-		world.addAll(items);
 		
 		Camera camera = new Camera(hero);
 		Editor editor = new Editor(camera);
@@ -95,12 +91,16 @@ public class GameBuilder {
 		Window w = new Window();
 		w.setContentPane(v);
 		
+		World world = new World(hero, editor);
+		world.addAll(items);
+		
 		KeyController keyController = new KeyController(hero, editor);
 		ui.build(keyController, camera, editor);
 		ui.addViews(world);
+		ui.addView(hero);
 		
 		TimeController timer = new TimeController(hero);
-		timer.addAll(world);
+		timer.add(world);
 		timer.add(ui);
 		
 		timer.start();
