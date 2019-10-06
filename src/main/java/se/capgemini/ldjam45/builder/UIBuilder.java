@@ -78,7 +78,7 @@ public class UIBuilder extends ArrayList<Updateable> implements Updateable {
     public void showScoreAndSkill(String skill) {
         view.addOverlays(
                 new Overlay(Arrays.asList(
-                        "Added new skill: " + skill
+                        "Added skill: " + skill
                 ), new Font("Arial", Font.BOLD, 30), TIME_ON_SCREEN * 2, view.getHeight() - 400)
         );
 
