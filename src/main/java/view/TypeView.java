@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
-import javax.swing.JLabel;
+import javax.swing.*;
 
 import controller.Camera;
 import model.Hero;
@@ -19,7 +19,7 @@ public class TypeView extends JLabel implements Updateable {
 	private Camera camera;
 	
 	public TypeView(Camera camera) {
-		this.setOpaque(true);
+		this.setOpaque(false);
 		this.camera = camera;
 	}
 	
@@ -31,12 +31,7 @@ public class TypeView extends JLabel implements Updateable {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
-		if (exists()) {
-			this.setBackground(Color.green);
-		} else {
-			this.setBackground(Color.red);		
-		}
+
 	}
 	
 	public void setType(Type type) {
@@ -44,7 +39,8 @@ public class TypeView extends JLabel implements Updateable {
 		
 		if (exists()) {
 			Dimension dimension = new Dimension(type.width(), type.height());
-			
+
+			this.setIcon(new ImageIcon(type.getImage()));
 			this.setSize(dimension);
 			this.setPreferredSize(dimension);
 			this.setVisible(true);

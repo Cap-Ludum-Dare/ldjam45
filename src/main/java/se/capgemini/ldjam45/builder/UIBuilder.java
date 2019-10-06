@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controller.Camera;
+import model.Hero;
 import model.Type;
 import model.Updateable;
 import se.capgemini.ldjam45.ui.Window;
@@ -13,8 +14,12 @@ import view.View;
 
 public class UIBuilder extends ArrayList<Updateable> implements Updateable {
 	
-	private View view = new View();
+	private View view;
 	private Camera camera;
+
+	public UIBuilder(){
+		this.view = new View();
+	}
 	
 	public void build(KeyListener keyListener, Camera camera) {
 		Window window = new Window();

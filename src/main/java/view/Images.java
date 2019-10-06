@@ -41,14 +41,24 @@ public enum Images {
     TREE9("./src/main/resources/tiles/tree (9).png"),
     TREE10("./src/main/resources/tiles/tree (10).png"),
     TREE11("./src/main/resources/tiles/tree (11).png"),
-    TREE12("./src/main/resources/tiles/tree (12).png");
+    TREE12("./src/main/resources/tiles/tree (12).png"),
+    HERO("./src/main/resources/tiles/hero.png"),
+    JAVA("./src/main/resources/tiles/java.png");
 
 
     private static final int TILE_SIZE = 50;
-    public final Image image;
+    private static final int HERO_HEIGHT = 80;
+    private static final int ITEM_SIZE = 30;
+    private Image image;
 
     private Images(String path){
-        this.image = new ImageIcon(path).getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT);
+        if(path.contains("hero")){
+            this.image = new ImageIcon(path).getImage().getScaledInstance(TILE_SIZE, HERO_HEIGHT, Image.SCALE_DEFAULT);
+        } else if(path.contains("java")){
+            this.image = new ImageIcon(path).getImage().getScaledInstance(ITEM_SIZE, ITEM_SIZE, Image.SCALE_DEFAULT);
+        } else {
+            this.image = new ImageIcon(path).getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT);
+        }
     }
 
     public Image getImage(){

@@ -1,6 +1,9 @@
 package model;
 
-import java.awt.Rectangle;
+import view.Images;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +15,9 @@ public class Hero extends Type {
 	private int speed = 10;
 	private int dx = 0;
 	private int dy = 0;
-	
-	public Hero(int x, int y, int width, int height) {
-		super(x, y, width, height);
+
+	public Hero(int x, int y, int width, int height, Image image) {
+		super(x, y, width, height, image);
 	}
 	
 	public boolean isAlive() {
@@ -45,6 +48,10 @@ public class Hero extends Type {
 		if (interactable instanceof Item) {
 			items.add(((Item)interactable).pickedUp());
 		}
+	}
+
+	public Image getImage(){
+		return this.image;
 	}
 
 }
