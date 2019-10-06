@@ -50,16 +50,7 @@ public class Hero extends Type {
 	public void move() {
 		x = nextX();
 		y = nextY();
-	}
-
-	public void update() {
 		
-	}
-
-	public void tick() {
-		x += dx * speed;
-		y += dy * speed;
-
 		index = (++index) % 2;
 		if (isRight()) {
 			image = rightArray[index];
@@ -70,6 +61,14 @@ public class Hero extends Type {
 		} else if (isDown()) {
 			image = downArray[index];
 		}
+	}
+
+	public void update() {
+		
+	}
+
+	public void tick() {
+
 	}
 
 	private boolean isDown() {
