@@ -55,11 +55,45 @@ public enum Images {
     HERO_7("./src/main/resources/images/hero/walks/walk_right/right2.png"),
     ROAD_0("./src/main/resources/images/road/bridge (1).png"),
     ROAD_1("./src/main/resources/images/road/bridge (2).png"),
-    LEVEL1PHONE_0("./src/main/resources/images/items/level1/smartphone.png");
+    LEVEL1PHONE_0("./src/main/resources/images/items/level1/smartphone.png"),
+    BACKPACK("./src/main/resources/images/items/level1/backpack.png"),
+    BOOK("./src/main/resources/images/items/level1/book.png"),
+    COMPUTER("./src/main/resources/images/items/level1/computer.png"),
+    JOYSTICK("./src/main/resources/images/items/level1/joystick.png"),
+    JUICE("./src/main/resources/images/items/level1/juice.png"),
+    NOTEPAD("./src/main/resources/images/items/level1/notepad.png"),
+    REMOTE("./src/main/resources/images/items/level1/remote.png"),
+    SCREWDRIVER("./src/main/resources/images/items/level1/screwdriver.png"),
+    SMARTPHONE("./src/main/resources/images/items/level1/smartphone.png"),
+    TOOTHBRUSH("./src/main/resources/images/items/level1/toothbrush.png"),
+    BLENDER("./src/main/resources/images/items/level2/blender.png"),
+    BRUSH("./src/main/resources/images/items/level2/brush.png"),
+    CALCULATOR("./src/main/resources/images/items/level2/calculator.png"),
+    CHEMISTRY("./src/main/resources/images/items/level2/chemics.png"),
+    COFFEE("./src/main/resources/images/items/level2/coffee.png"),
+    HEADSET("./src/main/resources/images/items/level2/headset.png"),
+    PAN("./src/main/resources/images/items/level2/pan.png"),
+    PEPPER("./src/main/resources/images/items/level2/pepper.png"),
+    WHEEL("./src/main/resources/images/items/level2/wheel.png"),
+    WINE("./src/main/resources/images/items/level2/wine.png"),
+    BACKEND("./src/main/resources/images/items/level3/backend.png"),
+    BELL("./src/main/resources/images/items/level3/bell.png"),
+    COLOR("./src/main/resources/images/items/level3/color.png"),
+    FRONTEND("./src/main/resources/images/items/level3/frontend.png"),
+    KEY("./src/main/resources/images/items/level3/key.png"),
+    KEYBOARD("./src/main/resources/images/items/level3/keyboard.png"),
+    PEN("./src/main/resources/images/items/level3/pen.png"),
+    SCREEN("./src/main/resources/images/items/level3/screen.png"),
+    STACK("./src/main/resources/images/items/level3/stack.png"),
+    VIDEO_GAMES("./src/main/resources/images/items/level3/video_games.png"),
+    WIN("./src/main/resources/images/win.png");
 
     public static final int TILE_SIZE = 50;
     public static final int HERO_HEIGHT = 80;
+    public static final int HERO_WIDTH = 50;
     public static final int ITEM_SIZE = 30;
+    public static final int WIN_X_SIZE = 500;
+    public static final int WIN_Y_SIZE = 300;
 
     public static final String SEPARATOR = "_";
     
@@ -67,6 +101,10 @@ public enum Images {
     	return GRASS_8;
     }
     
+    public static Images defaultWater() {
+    	return Images.WATER_0;
+    }
+
     public static Images getImage(String key) {
     	for (Images images : Images.values()) {
     		if (("" + images.name().toUpperCase().charAt(0))
@@ -80,27 +118,39 @@ public enum Images {
     
     private Image image;
     private boolean isWalkable;
+    public Images background;
 
     private Images(String path){
         if(path.contains("hero")){
-            this.image = new ImageIcon(path).getImage().getScaledInstance(TILE_SIZE, HERO_HEIGHT, Image.SCALE_DEFAULT);
+            this.image = new ImageIcon(path).getImage().getScaledInstance(HERO_WIDTH, HERO_HEIGHT, Image.SCALE_DEFAULT);
             this.isWalkable = false;
         } else if(path.contains("items")){
             this.image = new ImageIcon(path).getImage().getScaledInstance(ITEM_SIZE, ITEM_SIZE, Image.SCALE_DEFAULT);
             this.isWalkable = true;
         } else if(path.contains("road")){
             this.isWalkable = true;
+        } else if(path.contains("win")){
+            this.image = new ImageIcon(path).getImage().getScaledInstance(WIN_X_SIZE, WIN_Y_SIZE, Image.SCALE_DEFAULT);
+        } else if(path.contains("grass")){
+            this.image = new ImageIcon(path).getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT);
+            this.isWalkable = true;
         } else {
             this.image = new ImageIcon(path).getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT);
             this.isWalkable = false;
         }
+
+    	if (path.contains("tree")) {
+    		background = Images.defaultImage();
+    	} else if (path.contains("bridge")) {
+    		background = Images.defaultWater();
+    	}
     }
     
     public Image getImage(){
         return this.image;
     }
     
-    public boolean getIsWalkable(){
+    public boolean isWalkable(){
         return isWalkable;
     }
     

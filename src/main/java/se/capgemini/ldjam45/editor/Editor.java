@@ -1,10 +1,13 @@
 package se.capgemini.ldjam45.editor;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import se.capgemini.ldjam45.controller.Camera;
@@ -23,6 +26,47 @@ public class Editor {
 	public Editor(Camera camera) {
 		load();
 		this.camera = camera;
+	}
+	
+	public String getOriginal(int x, int y) {
+		x = x / MULTIPLIER;
+		y = y / MULTIPLIER;
+		
+		Point point = new Point(x, y);
+		return map.containsKey(point) ? map.get(point) : " ";
+	}
+	
+	public boolean isWalkable(int x, int y) {
+		int originalX = x;
+		int originalY = y;
+		x = x / MULTIPLIER;
+		y = y / MULTIPLIER;
+		
+		boolean isWalkable = true;
+		
+		for (int i = x - 1; i<=x+1; i++) {
+			for (int j = y - 1; j<=y+1; j++) {
+				Point point = new Point(i, j);
+				String key = map.get(point);
+	
+				try {
+					Images images = Images.valueOf(key);
+					
+					if (!images.isWalkable()) {
+						Rectangle hero = new Rectangle(originalX, originalY, Images.HERO_WIDTH, Images.HERO_HEIGHT);
+						Rectangle square = new Rectangle(i * MULTIPLIER, j * MULTIPLIER, Images.TILE_SIZE, Images.TILE_SIZE);
+						
+						if (hero.intersects(square)) {
+							isWalkable = false;
+							break;
+						}
+					}
+				} catch (Exception ex) {
+				}
+			}
+		}
+		
+		return isWalkable;
 	}
 	
 	public String get(int x, int y) {

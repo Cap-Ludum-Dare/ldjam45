@@ -34,8 +34,8 @@ public class Hero extends Type {
 			Images.HERO_1.getImage()
 	};
 
-	public Hero(int x, int y, int width, int height, Image image) {
-		super(x, y, width, height, image);
+	public Hero(String name, int x, int y, int width, int height, Image image) {
+		super(name, x, y, width, height, image);
 	}
 	
 	public boolean isAlive() {
@@ -47,7 +47,13 @@ public class Hero extends Type {
 		this.dy = dy;
 	}
 
+	public void move() {
+		x = nextX();
+		y = nextY();
+	}
+
 	public void update() {
+		
 	}
 
 	public void tick() {
@@ -80,18 +86,29 @@ public class Hero extends Type {
 
 	private boolean isRight() {
 		return dx > 0;
+
 	}
 
+	public int nextY() {
+		return y + dy * speed;
+	}
+
+	public int nextX() {
+		return x + dx * speed;
+	}
+	
 	public boolean isInteractable(Type type) {
 		Rectangle rectangle = new Rectangle(x, y, width, height);
 		Rectangle compared = new Rectangle(type.x, type.y, type.width, type.height);
 		return rectangle.intersects(compared);
 	}
 
-	public void interact(Interactable interactable) {
+	public boolean interact(Interactable interactable) {
 		if (interactable instanceof Item) {
 			items.add(((Item)interactable).pickedUp());
+			return true;
 		}
+		return false;
 	}
 
 	public Image getImage(){
