@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public enum Images {
+    GRASS_0("./src/main/resources/images/background/grass (8).png"),
     GRASS_1("./src/main/resources/images/background/grass (1).png"),
     GRASS_2("./src/main/resources/images/background/grass (2).png"),
     GRASS_3("./src/main/resources/images/background/grass (3).png"),
@@ -17,6 +18,7 @@ public enum Images {
     GRASS_11("./src/main/resources/images/background/grass (11).png"),
     GRASS_12("./src/main/resources/images/background/grass (12).png"),
     GRASS_13("./src/main/resources/images/background/grass (13).png"),
+    WATER_0("./src/main/resources/images/background/water (4).png"),
     WATER_1("./src/main/resources/images/background/water (1).png"),
     WATER_2("./src/main/resources/images/background/water (2).png"),
     WATER_3("./src/main/resources/images/background/water (3).png"),
@@ -30,6 +32,7 @@ public enum Images {
     WATER_11("./src/main/resources/images/background/water (11).png"),
     WATER_12("./src/main/resources/images/background/water (12).png"),
     WATER_13("./src/main/resources/images/background/water (13).png"),
+    TREE_0("./src/main/resources/images/trees/tree (4).png"),
     TREE_1("./src/main/resources/images/trees/tree (1).png"),
     TREE_2("./src/main/resources/images/trees/tree (2).png"),
     TREE_3("./src/main/resources/images/trees/tree (3).png"),
@@ -42,12 +45,12 @@ public enum Images {
     TREE_10("./src/main/resources/images/trees/tree (10).png"),
     TREE_11("./src/main/resources/images/trees/tree (11).png"),
     TREE_12("./src/main/resources/images/trees/tree (12).png"),
-    HERO_1("./src/main/resources/images/hero/walks/walk_down/down1.png"),
-    LEVEL1PHONE_1("./src/main/resources/images/items/level1/smarthphone.png");
+    HERO_0("./src/main/resources/images/hero/walks/walk_down/down1.png"),
+    LEVEL1PHONE_0("./src/main/resources/images/items/level1/smarthphone.png");
 
-    private static final int TILE_SIZE = 50;
-    private static final int HERO_HEIGHT = 80;
-    private static final int ITEM_SIZE = 30;
+    public static final int TILE_SIZE = 50;
+    public static final int HERO_HEIGHT = 80;
+    public static final int ITEM_SIZE = 30;
 
     public static final String SEPARATOR = "_";
     

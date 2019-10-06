@@ -27,7 +27,7 @@ public class UIBuilder extends ArrayList<Updateable> implements Updateable {
 		Window window = new Window();
 		window.setContentPane(view);
 		window.addKeyListener(keyController);
-		window.addMouseListener(keyController);
+		view.addMouseListener(keyController);
 		
 		this.camera = camera;
 		camera.setWindow(window);
