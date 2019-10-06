@@ -18,7 +18,6 @@ public class TypeView extends JLabel implements Updateable {
 
 	private Type type;
 	private Camera camera;
-	private boolean showTooltip = false;
 
 
 	public TypeView(Camera camera) {
