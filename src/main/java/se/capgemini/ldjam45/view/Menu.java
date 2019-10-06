@@ -8,14 +8,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-import static se.capgemini.ldjam45.view.Images.*;
+import static se.capgemini.ldjam45.view.Images.WIN_X_SIZE;
+import static se.capgemini.ldjam45.view.Images.WIN_Y_SIZE;
 
-public class Victory extends JPanel {
+public class Menu extends JPanel {
 
     private ClientController clientController;
 
-    public Victory() {
-        this.setLayout(null);
+    public Menu() {
         this.clientController = new ClientController();
     }
 
@@ -25,10 +25,11 @@ public class Victory extends JPanel {
         int x = this.getWidth() / 2 - (WIN_X_SIZE / 2);
         int y = this.getHeight() / 2 - (WIN_Y_SIZE / 2);
 
-        g.drawImage(WIN.getImage(), x, y, this);
+        g.setFont(new Font("Verdana", Font.BOLD, 100));
+        g.drawString("Insert your username: ", this.getWidth() / 2 - (g.getFontMetrics().stringWidth("Insert your username: ") / 2), this.getHeight() / 2);
         g.setFont(new Font("Verdana", Font.BOLD, 50));
-        g.drawString("Scores: ", this.getWidth() - (this.getWidth() * 3 / 10), this.getHeight() - (this.getHeight() * 9 / 10));
-        List<Score> scores = clientController.getScores();
+        g.drawString("Top 3: ", this.getWidth() - (this.getWidth() * 3 / 10), this.getHeight() - (this.getHeight() * 9 / 10));
+        List<Score> scores = clientController.getTop3();
         g.setFont(new Font("Verdana", Font.BOLD, 20));
         int spacement = 0;
         for (Score s : scores) {

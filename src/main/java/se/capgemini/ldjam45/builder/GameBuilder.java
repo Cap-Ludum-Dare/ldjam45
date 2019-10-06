@@ -18,6 +18,7 @@ import se.capgemini.ldjam45.sound.SoundEffect;
 import se.capgemini.ldjam45.ui.Window;
 import se.capgemini.ldjam45.view.GameOver;
 import se.capgemini.ldjam45.view.Images;
+import se.capgemini.ldjam45.view.Menu;
 import se.capgemini.ldjam45.view.Victory;
 import se.capgemini.ldjam45.view.View;
 
@@ -46,11 +47,11 @@ public class GameBuilder {
 		/*
 		testing victory
 		 */
-		Victory v = new Victory(editor, camera);
+		Victory v = new Victory();
 		Window w = new Window();
 		w.setContentPane(v);
 
-		GameOver gameOver = new GameOver(editor, camera);
+		Menu gameOver = new Menu();
 		Window w2 = new Window();
 		w2.setContentPane(gameOver);
 		
