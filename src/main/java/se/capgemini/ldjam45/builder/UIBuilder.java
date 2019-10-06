@@ -1,6 +1,8 @@
 package se.capgemini.ldjam45.builder;
 
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +39,7 @@ public class UIBuilder extends ArrayList<Updateable> implements Updateable {
 					"Welcome", 
 					"Let's start with nothing!"
 					), new Font("Arial", Font.BOLD, 30), 10000, 50),
-				
+
 				new Overlay(Arrays.asList(
 					"Credits LD45", 
 					"Renata Faria, Linda-Marie Karlsson, Alfredo Faria,",
@@ -53,11 +55,22 @@ public class UIBuilder extends ArrayList<Updateable> implements Updateable {
 			this.addView(type);
 		}
 	}
-	
+
+	private int DISTANCE_BELOW = 30;
+	private int TIME_ON_SCREEN = 1000; // Milliseconds
+
 	public void addView(Type type) {
 		TypeView typeView = new TypeView(camera, type);
 		this.add(typeView);
 		view.add(typeView);
+		typeView.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent arg0) {
+				view.addOverlays(
+						new Overlay(Arrays.asList(
+								type.getName()
+						), new Font("Arial", Font.BOLD, 30), TIME_ON_SCREEN, typeView.getY() + typeView.getHeight() + DISTANCE_BELOW));
+			}
+		});
 	}
 
 	public void update() {

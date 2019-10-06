@@ -14,8 +14,8 @@ public class Hero extends Type {
 	private int dx = 0;
 	private int dy = 0;
 
-	public Hero(int x, int y, int width, int height, Image image) {
-		super(x, y, width, height, image);
+	public Hero(String name, int x, int y, int width, int height, Image image) {
+		super(name, x, y, width, height, image);
 	}
 	
 	public boolean isAlive() {

@@ -1,8 +1,9 @@
 package se.capgemini.ldjam45.view;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Arrays;
 
 import javax.swing.*;
 
@@ -14,10 +15,11 @@ import se.capgemini.ldjam45.model.Updateable;
 public class TypeView extends JLabel implements Updateable {
 	
 	private static final long serialVersionUID = -6626113045924858904L;
-	
+
 	private Type type;
 	private Camera camera;
-	
+
+
 	public TypeView(Camera camera) {
 		this.setOpaque(false);
 		this.camera = camera;
@@ -33,7 +35,8 @@ public class TypeView extends JLabel implements Updateable {
 		super.paintComponent(g);
 
 	}
-	
+
+
 	public void setType(Type type) {
 		this.type = type;
 		
