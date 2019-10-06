@@ -5,7 +5,7 @@ import java.util.Arrays;
 import se.capgemini.ldjam45.controller.Camera;
 import se.capgemini.ldjam45.controller.KeyController;
 import se.capgemini.ldjam45.controller.TimeController;
-import se.capgemini.ldjam45.editor.PointEditor;
+import se.capgemini.ldjam45.editor.Editor;
 import se.capgemini.ldjam45.model.Hero;
 import se.capgemini.ldjam45.model.Item;
 import se.capgemini.ldjam45.model.World;
@@ -29,7 +29,7 @@ public class GameBuilder {
 		world.addAll(Arrays.asList(item));
 		
 		Camera camera = new Camera(hero);
-		PointEditor editor = new PointEditor(camera);
+		Editor editor = new Editor(camera);
 		UIBuilder ui = new UIBuilder();
 		
 		KeyController keyController = new KeyController(hero, editor);

@@ -9,16 +9,16 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-import se.capgemini.ldjam45.editor.PointEditor;
+import se.capgemini.ldjam45.editor.Editor;
 import se.capgemini.ldjam45.model.Hero;
 
 public class KeyController implements KeyListener, MouseListener, WindowListener, ComponentListener {
 	
 	private char currentKey = ' ';
 	private Hero hero;
-	private PointEditor editor;
+	private Editor editor;
 	
-	public KeyController(Hero hero, PointEditor editor) {
+	public KeyController(Hero hero, Editor editor) {
 		this.hero = hero;
 		this.editor = editor;
 	}
@@ -93,7 +93,7 @@ public class KeyController implements KeyListener, MouseListener, WindowListener
 	}
 
 	public void mousePressed(MouseEvent event) {
-		editor.put(event.getX(), event.getY(), currentKey);
+		editor.put(event.getX(), event.getY(), "" + currentKey);
 	}
 
 	public void mouseReleased(MouseEvent arg0) {

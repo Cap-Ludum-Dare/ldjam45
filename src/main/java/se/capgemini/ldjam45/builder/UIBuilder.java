@@ -5,7 +5,7 @@ import java.util.List;
 
 import se.capgemini.ldjam45.controller.Camera;
 import se.capgemini.ldjam45.controller.KeyController;
-import se.capgemini.ldjam45.editor.PointEditor;
+import se.capgemini.ldjam45.editor.Editor;
 import se.capgemini.ldjam45.model.Type;
 import se.capgemini.ldjam45.model.Updateable;
 import se.capgemini.ldjam45.ui.Window;
@@ -17,8 +17,8 @@ public class UIBuilder extends ArrayList<Updateable> implements Updateable {
 	private View view;
 	private Camera camera;
 	
-	public void build(KeyController keyController, Camera camera, PointEditor editor) {
-		view = new View(editor);
+	public void build(KeyController keyController, Camera camera, Editor editor) {
+		view = new View(editor, camera);
 		Window window = new Window();
 		window.setContentPane(view);
 		window.addKeyListener(keyController);
