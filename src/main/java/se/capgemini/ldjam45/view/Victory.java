@@ -41,11 +41,9 @@ public class Victory extends JPanel {
             spacement += 50;
             g.drawString(s.getUsername() + ": " + s.getScore(), this.getWidth() - (this.getWidth() * 3/10), this.getHeight() - (this.getHeight() * 9/10) + spacement);
         }
-        g.setColor(Color.red);
-        g.setFont(new Font("Verdana", Font.BOLD, 50));
-        g.drawString("Your Score: ", this.getWidth() / 2 - (g.getFontMetrics().stringWidth("Your Score: ") / 2), this.getHeight() - (this.getHeight() * 3/10));
+
         g.setColor(Color.black);
         g.setFont(new Font("Verdana", Font.BOLD, 30));
-        g.drawString(String.valueOf(ScoreHandler.getTotalScore()), this.getWidth() / 2 - (g.getFontMetrics().stringWidth(String.valueOf(ScoreHandler.getTotalScore())) / 2), this.getHeight() - (this.getHeight() * 2/10));
+        g.drawString(String.valueOf("Your Score: " + ScoreHandler.getTotalScore()), this.getWidth() / 2 - (g.getFontMetrics().stringWidth(String.valueOf(ScoreHandler.getTotalScore()) + g.getFontMetrics().stringWidth(String.valueOf("Your Score: ")) / 2)), this.getHeight() - (this.getHeight() * 2/10));
     }
 }
