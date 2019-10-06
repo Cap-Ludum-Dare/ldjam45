@@ -1,12 +1,9 @@
 package se.capgemini.ldjam45.model;
 
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.awt.*;
+import java.util.*;
 
+import se.capgemini.ldjam45.builder.UIBuilder;
 import se.capgemini.ldjam45.editor.Editor;
 import se.capgemini.ldjam45.view.Images;
 
@@ -16,12 +13,14 @@ public class World extends ArrayList<Type> implements Updateable {
 	
 	private Hero hero;
 	private Editor editor;
+	private UIBuilder ui;
 	
-	public World(Hero hero, Editor editor) {
+	public World(Hero hero, Editor editor, UIBuilder ui) {
 		this.hero = hero;
 		this.editor = editor;
+		this.ui = ui;
 	}
-	
+
 	public void randomizeItems() {
 		Images[] imagesArray = {
 				Images.BACKPACK,
@@ -55,7 +54,9 @@ public class World extends ArrayList<Type> implements Updateable {
 				Images.STACK,
 				Images.VIDEO_GAMES
 		};
-		
+
+
+
 		Set<Point> points = new HashSet<Point>();
 		Random random = new Random();
 		for (Images images : imagesArray) {
@@ -68,7 +69,8 @@ public class World extends ArrayList<Type> implements Updateable {
 					if (!points.contains(point) &&
 							editor.getExact(point).trim().isEmpty()) {
 						String name = images.name().substring(0, 1).toUpperCase() + images.name().substring(1);
-						Item item = new Item(name, x * Images.TILE_SIZE, y * Images.TILE_SIZE, Images.ITEM_SIZE, Images.ITEM_SIZE, images.getImage());
+						String skill = images.skill;
+						Item item = new Item(name, skill,x * Images.TILE_SIZE, y * Images.TILE_SIZE, Images.ITEM_SIZE, Images.ITEM_SIZE, images.getImage());
 						this.add(item);
 						points.add(point);
 						break;
@@ -97,7 +99,10 @@ public class World extends ArrayList<Type> implements Updateable {
 				this.remove(updateable);
 			} else if (updateable instanceof Type
 					&& hero.isInteractable((Type)updateable)) {
-				hero.interact((Type)updateable);
+				String skill = hero.interact((Type)updateable);
+				if (!skill.isEmpty()) {
+					ui.showScoreAndSkill(skill);
+				}
 			}
 		}
 		

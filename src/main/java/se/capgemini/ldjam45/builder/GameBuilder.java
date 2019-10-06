@@ -29,15 +29,15 @@ public class GameBuilder {
 		
 	}
 
-	private void addItem(List<Item> items, String name, int x, int y, Image image) {
-		Item item = new Item(name, x, y, 30, 30, image);
+	private void addItem(List<Item> items, String name, String skill, int x, int y, Image image) {
+		Item item = new Item(name, skill, x, y, 30, 30, image);
 		items.add(item);
 	}
 
 	public void build() {
 		
 		// x, y, width, height
-		Hero hero = new Hero("You",50, 50, 50, 80, Images.HERO_0.getImage());
+		Hero hero = new Hero("You","You", 50, 50, 50, 80, Images.HERO_0.getImage());
 
 		Camera camera = new Camera(hero);
 		Editor editor = new Editor(camera);
@@ -49,9 +49,9 @@ public class GameBuilder {
 		Window w = new Window();
 		w.setContentPane(v);
 		
-		World world = new World(hero, editor);
+		World world = new World(hero, editor, ui);
 		world.randomizeItems();
-		
+
 		KeyController keyController = new KeyController(hero, editor);
 		ui.build(keyController, camera, editor);
 		ui.addViews(world);
@@ -67,11 +67,8 @@ public class GameBuilder {
 	public static void main(String[] m) {
 		new GameBuilder().build();
 
-/*		BackgroundMusic bgMusic = new BackgroundMusic();
+		BackgroundMusic bgMusic = new BackgroundMusic();
 		Thread t1 = new Thread(bgMusic);
 		t1.start();
-
-		SoundEffect.test(); // Test sound effects!*/
 	}
-	
 }
