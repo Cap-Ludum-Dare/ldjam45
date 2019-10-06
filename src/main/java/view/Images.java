@@ -43,8 +43,7 @@ public enum Images {
     TREE11("./src/main/resources/images/trees/tree (11).png"),
     TREE12("./src/main/resources/images/trees/tree (12).png"),
     HERO("./src/main/resources/images/hero/walks/walk_down/down1.png"),
-    JAVA("./src/main/resources/images/items/java.png");
-
+    LEVEL1_PHONE("./src/main/resources/images/items/level1/smarthphone.png");
 
     private static final int TILE_SIZE = 50;
     private static final int HERO_HEIGHT = 80;
