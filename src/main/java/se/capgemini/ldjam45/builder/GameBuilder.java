@@ -99,7 +99,7 @@ public class GameBuilder {
 		ui.build(keyController, camera, editor);
 		ui.addViews(world);
 		
-		TimeController timer = new TimeController(hero);
+		TimeController timer = new TimeController(hero, ui);
 		timer.addAll(world);
 		timer.add(ui);
 		

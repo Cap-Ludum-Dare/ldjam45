@@ -1,5 +1,6 @@
 package se.capgemini.ldjam45.model;
 
+import se.capgemini.ldjam45.score.ScoreHandler;
 import se.capgemini.ldjam45.sound.SoundEffect;
 
 import javax.swing.*;
@@ -14,6 +15,7 @@ public class Item extends Hero {
 	public Item pickedUp() {
 		isAlive = false;
 		SoundEffect.PICK.play();
+		ScoreHandler.addScore(100);
 		return this;
 	}
 
